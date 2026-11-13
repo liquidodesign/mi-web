@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>VISIONNAIRE</title>
 <style>
   :root { --bg:#000; --fg:#fff; --muted:#9a9a9a; }
@@ -13,7 +13,7 @@
   .hero h1 {
     position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
     width:min(90%,1100px); text-align:center; pointer-events:none;
-    font-family:Arial, Helvetica, sans-serif; font-weight:700; font-size:clamp(1.6rem,4.5vw,4rem);
+    font-family:Arial, Helvetica, sans-serif; font-weight:400; font-size:clamp(1.6rem,4.5vw,4rem);
     line-height:1.1; text-shadow:0 2px 24px rgba(0,0,0,.7);
   }
   .grid { display:grid; grid-template-columns:repeat(var(--cols,2),1fr); gap:2px; background:#000; }
@@ -38,13 +38,13 @@
   .panel .ctl { padding:6px 0 0; }
   .panel input, .panel textarea { width:100%; margin-bottom:10px; padding:10px; font:14px Arial, Helvetica, sans-serif; background:#000; color:#fff; border:1px solid #555; }
   .panel textarea { height:160px; }
-  .panel .err { color:#ff8a80; min-height:1em; }
+  .panel .err { color:#ccc; min-height:1em; }
   .note { background:#222; color:#fff; padding:12px 16px; font-size:.85rem; line-height:1.4; }
   .b.open { background:#fff; color:#000; border-color:#fff; }
   .herolink .b { pointer-events:auto; margin-left:6px; }
   .pf { position:fixed; inset:0; z-index:30; background:#000; overflow-y:auto; transform:translateX(100%); transition:transform .5s cubic-bezier(.2,.8,.2,1), visibility 0s .5s; visibility:hidden; }
   .pf.open { transform:none; visibility:visible; transition:transform .5s cubic-bezier(.2,.8,.2,1); }
-  .pf-top { position:sticky; top:0; z-index:2; height:52px; display:flex; align-items:center; justify-content:space-between; padding:0 16px; background:#000; border-bottom:1px solid #222; font-weight:700; font-size:1rem; }
+  .pf-top { position:sticky; top:0; z-index:2; height:52px; display:flex; align-items:center; justify-content:space-between; padding:0 16px; background:#000; border-bottom:1px solid #222; font-weight:400; font-size:1rem; }
   .pf-top span { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; padding-right:12px; }
   .pf-stage { height:calc(100vh - 52px - 56px); background:#000; }
   .pf-stage iframe { width:100%; height:100%; border:0; }
@@ -76,7 +76,7 @@
   .grid[data-cols="6"] .play { transform:scale(.55); }
   .caps { margin-bottom:36px; }
   .capbar { padding:0 0 8px; }
-  .pf-art .capmsg { font-size:.85rem; color:#d8c46a; min-height:1.2em; margin:4px 0 10px; line-height:1.4; }
+  .pf-art .capmsg { font-size:.85rem; color:#bbb; min-height:1.2em; margin:4px 0 10px; line-height:1.4; }
   .capgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:8px; }
   .thumb { position:relative; border:2px solid transparent; cursor:pointer; background:#111; }
   .thumb img { display:block; width:100%; aspect-ratio:16/9; object-fit:cover; }
@@ -97,7 +97,7 @@
   .tv-hud button, .tv-hud input { pointer-events:none; }
   .tv.show .tv-hud button, .tv.show .tv-hud input { pointer-events:auto; }
   .tv-top { position:absolute; top:0; left:0; right:0; display:flex; gap:10px; align-items:center; padding:calc(12px + env(safe-area-inset-top, 0px)) 16px 32px; background:linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,0)); font:14px Arial, Helvetica, sans-serif; color:#fff; }
-  .tv-top #tv-title { flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-weight:700; }
+  .tv-top #tv-title { flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-weight:400; }
   .tv-bottom { position:absolute; left:0; right:0; bottom:0; padding:36px 16px calc(14px + env(safe-area-inset-bottom, 0px)); background:linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.8)); font:13px Arial, Helvetica, sans-serif; color:#fff; }
   #tv-seek { width:100%; accent-color:#fff; margin-bottom:8px; }
   .tv-row { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; }
@@ -111,7 +111,7 @@
   html[data-theme="light"] .grid, html[data-theme="light"] .item { background:#fff; }
   html[data-theme="light"] .item p { color:#555; }
   html[data-theme="light"] .item p a { color:#000; }
-  html[data-theme="light"] .frame, html[data-theme="light"] .poster { background:#eee; }
+  html[data-theme="light"] .frame, html[data-theme="light"] .poster { background:#111; }
   html[data-theme="light"] .ptitle { color:#666; }
   html[data-theme="light"] .bar button, html[data-theme="light"] .seg span, html[data-theme="light"] .b { color:#000; background:rgba(255,255,255,.92); border-color:#888; }
   html[data-theme="light"] .b.open { background:#000; color:#fff; border-color:#000; }
@@ -120,8 +120,9 @@
   html[data-theme="light"] .fbar { background:#000; color:#fff; }
   html[data-theme="light"] .fbar .b { color:#fff; border-color:#fff; background:transparent; }
   html[data-theme="light"] .pf { background:#fff; color:#000; }
-  html[data-theme="light"] .pf-top { background:#fff; border-color:#ddd; }
-  html[data-theme="light"] .pf-ctl { background:#f4f4f4; border-color:#ddd; }
+    html[data-theme="light"] .pf-ctl { background:#000; border-color:#222; }
+  html[data-theme="light"] .pf-top { background:#000; color:#fff; border-color:#222; }
+  html[data-theme="light"] .pf-ctl .b, html[data-theme="light"] .pf-top .b { color:#fff; background:rgba(255,255,255,.12); border-color:#444; }
   html[data-theme="light"] .pf-art h3, html[data-theme="light"] .pf-art dt { color:#666; }
   html[data-theme="light"] .pf-art dl { border-color:#ccc; }
   html[data-theme="light"] .pf-art .cr { border-color:#ddd; }
@@ -131,12 +132,255 @@
   html[data-theme="light"] .panel { background:#fff; border-color:#bbb; }
   html[data-theme="light"] .panel p { color:#444; }
   html[data-theme="light"] .panel input, html[data-theme="light"] .panel textarea { background:#fff; color:#000; border-color:#999; }
-  html[data-theme="light"] .pf-art .capmsg { color:#8a6d00; }
+  html[data-theme="light"] .pf-art .capmsg { color:#555; }
   html[data-theme="light"] .thumb { background:#eee; }
   html[data-theme="light"] .thumb.sel { border-color:#000; }
   html[data-theme="light"] .thumb .tick { border-color:#000; background:rgba(255,255,255,.6); }
   html[data-theme="light"] .thumb.sel .tick { background:#000; }
   html[data-theme="light"] .empty { color:#888; }
+  .tv-line { position:relative; height:28px; margin-bottom:4px; cursor:pointer; pointer-events:none; touch-action:none; }
+  .tv.show .tv-line { pointer-events:auto; }
+  .tv-track { position:absolute; left:0; right:0; top:12px; height:4px; background:rgba(255,255,255,.3); transition:height .15s ease, top .15s ease; }
+  .tv-line:hover .tv-track, .tv-line.drag .tv-track { height:8px; top:10px; }
+  .tv-fill { position:absolute; left:0; top:0; bottom:0; width:0; background:#fff; }
+  .tv-knob { position:absolute; top:50%; left:0; width:14px; height:14px; margin:-7px 0 0 -7px; border-radius:50%; background:#fff; }
+  .tv-line.off { opacity:.45; cursor:default; }
+  .tv-big { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:min(88%,1100px); text-align:center; z-index:4; pointer-events:none; color:#fff; font:400 clamp(2rem,6vw,5rem)/1.08 Arial, Helvetica, sans-serif; text-shadow:0 2px 30px rgba(0,0,0,.8); opacity:0; transition:opacity 1.2s ease; }
+  .tv-big.on { opacity:1; transition:opacity .4s ease; }
+  .tv-infop { position:absolute; top:0; right:0; bottom:0; width:min(460px,92vw); z-index:6; background:rgba(8,8,8,.92); -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px); color:#fff; display:flex; flex-direction:column; font-family:Arial, Helvetica, sans-serif; transform:translateX(100%); visibility:hidden; transition:transform .5s cubic-bezier(.2,.8,.2,1), visibility 0s .5s; }
+  .tv-infop.open { transform:none; visibility:visible; transition:transform .5s cubic-bezier(.2,.8,.2,1); }
+  .tv-ihead { display:flex; justify-content:flex-end; padding:calc(12px + env(safe-area-inset-top, 0px)) 14px 8px; }
+  .tv-ibody { flex:1; overflow-y:auto; padding:4px 24px 48px; overscroll-behavior:contain; }
+  .tv-ibody h2 { font-size:1.5rem; line-height:1.15; margin:6px 0 18px; }
+  .tv-ibody h3 { font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:#9a9a9a; margin:24px 0 10px; }
+  .tv-ibody p { font-size:.98rem; line-height:1.65; margin-bottom:12px; }
+  .tv-ibody dl { border-top:1px solid #333; }
+  .tv-ibody .cr { display:flex; gap:12px; padding:8px 0; border-bottom:1px solid #222; font-size:.9rem; }
+  .tv-ibody dt { width:34%; color:#9a9a9a; }
+  .tv-ibody dd { flex:1; display:flex; flex-wrap:wrap; gap:6px; }
+  .tv-ibody .chips { display:flex; flex-wrap:wrap; gap:6px; }
+  .tv-full-btn { margin-top:28px; }
+  html[data-theme="light"] .tv-infop .chip { color:#fff; background:#161616; border-color:#444; }
+  html[data-theme="light"] .tv-infop .chip:hover { background:#fff; color:#000; }
+
+  :root { --accent:#fff; }
+  html, body { font-family:Arial, Helvetica, sans-serif; -webkit-font-smoothing:antialiased; }
+  .hero { height:100vh; height:100dvh; }
+  .hd { position:fixed; top:0; left:0; right:0; z-index:50; height:calc(56px + env(safe-area-inset-top, 0px)); padding:env(safe-area-inset-top, 0px) 18px 0; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; background:rgba(0,0,0,.7); -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px); color:#fff; transition:opacity .3s ease; }
+  html[data-theme="light"] .hd { background:rgba(255,255,255,.82); color:#000; }
+  body.pfon .hd { display:none; }
+  body.tvon .hd { background:linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,0)); color:#fff; -webkit-backdrop-filter:none; backdrop-filter:none; }
+  body.tvon:not(.tvshow) .hd { opacity:0; pointer-events:none; }
+  .hd-l { display:flex; align-items:center; gap:18px; min-width:0; }
+  .hd-r { display:flex; align-items:center; justify-content:flex-end; gap:10px; }
+  .nav { display:flex; gap:22px; }
+  .nav button { background:none; border:0; border-bottom:1px solid transparent; color:inherit; font:400 14px/1 Arial, Helvetica, sans-serif; opacity:.55; cursor:pointer; padding:8px 0; }
+  .nav button.on { opacity:1; border-bottom-color:currentColor; }
+  .logo { font:400 17px/1 Arial, Helvetica, sans-serif; letter-spacing:.08em; }
+  .logo span { opacity:.5; }
+  .ic { width:40px; height:40px; border-radius:50%; border:0; background:transparent; color:inherit; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; padding:0; }
+  .ic svg, .tb svg, .tv-c svg, .tv-rb svg, .tv-bm svg { width:22px; height:22px; fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
+  svg .f { fill:currentColor; stroke:none; }
+  .pill-p { display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 14px 0 4px; border-radius:999px; border:0; background:#fff; color:#000; font:400 13px Arial, Helvetica, sans-serif; cursor:pointer; }
+  html[data-theme="light"] .pill-p { background:#000; color:#fff; }
+  body.tvon .pill-p { background:#fff !important; color:#000 !important; }
+  .av { width:32px; height:32px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font:400 13px Arial, Helvetica, sans-serif; color:#fff; flex:none; overflow:hidden; position:relative; background:#555; }
+  .av img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .av.big { width:42px; height:42px; font-size:16px; }
+  .bar.menu { position:fixed; top:calc(62px + env(safe-area-inset-top, 0px)); left:12px; right:auto; z-index:55; display:none; flex-direction:column; align-items:stretch; gap:8px; width:240px; padding:12px; border-radius:16px; background:rgba(18,18,18,.96); border:1px solid #333; }
+  .bar.menu.open { display:flex; }
+  html[data-theme="light"] .bar.menu { background:#fff; border-color:#ccc; }
+  .bar.menu .seg { justify-content:space-between; }
+  .pmenu { position:fixed; top:calc(62px + env(safe-area-inset-top, 0px)); right:12px; z-index:55; display:none; flex-direction:column; width:250px; padding:12px; border-radius:16px; background:rgba(18,18,18,.96); border:1px solid #333; color:#fff; }
+  .pmenu.open { display:flex; }
+  html[data-theme="light"] .pmenu { background:#fff; border-color:#ccc; color:#000; }
+  .pm-h { display:flex; align-items:center; gap:12px; padding:4px 4px 12px; font:400 15px Arial, Helvetica, sans-serif; }
+  .pm { text-align:left; background:none; border:0; color:inherit; font:400 14px Arial, Helvetica, sans-serif; padding:11px 8px; border-top:1px solid rgba(128,128,128,.25); cursor:pointer; }
+  .fbar { top:calc(56px + env(safe-area-inset-top, 0px)); }
+  .poster .play { background:none; border:0; border-radius:0; }
+  .poster .play::after { left:22px; top:12px; border-left:32px solid #fff; border-top:20px solid transparent; border-bottom:20px solid transparent; filter:drop-shadow(0 2px 10px rgba(0,0,0,.45)); }
+  .pill { position:absolute; left:12px; bottom:12px; z-index:2; max-width:62%; display:flex; align-items:center; gap:10px; padding:6px 18px 6px 6px; border-radius:999px; background:rgba(20,20,20,.72); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); color:#fff; cursor:pointer; }
+  .pt { display:flex; flex-direction:column; min-width:0; text-align:left; }
+  .pt b { font:400 13px/1.25 Arial, Helvetica, sans-serif; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .pt i { font:400 11px/1.3 Arial, Helvetica, sans-serif; font-style:normal; opacity:.75; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .chips-r { position:absolute; right:12px; bottom:16px; z-index:2; display:flex; gap:8px; }
+  .chips-r span { border:1px solid rgba(255,255,255,.75); color:#fff; border-radius:999px; padding:5px 12px; font:400 11px Arial, Helvetica, sans-serif; background:rgba(0,0,0,.2); }
+  .grid[data-cols="6"] .pill { padding:3px 8px 3px 3px; gap:6px; left:6px; bottom:6px; }
+  .grid[data-cols="6"] .pill .av { width:20px; height:20px; font-size:9px; }
+  .grid[data-cols="6"] .pill .pt i, .grid[data-cols="6"] .chips-r { display:none; }
+  .grid[data-cols="6"] .pill .pt b { font-size:10px; }
+  .tv-rb, .tv-bm { position:absolute; top:calc(68px + env(safe-area-inset-top, 0px)); width:44px; height:44px; border-radius:50%; border:0; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; padding:0; }
+  .tv-rb { left:18px; background:#000; color:#fff; }
+  .tv-bm { right:18px; background:#fff; color:#000; }
+  .tv-bm.on svg path { fill:currentColor; }
+  .tv-count { position:absolute; top:calc(80px + env(safe-area-inset-top, 0px)); left:72px; color:#fff; font:400 13px Arial, Helvetica, sans-serif; opacity:.85; text-shadow:0 1px 8px rgba(0,0,0,.6); }
+  .tv-center { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); display:flex; align-items:center; gap:28px; transition:opacity .4s ease; }
+  .tv.titling .tv-center { opacity:0; }
+  .tv-c { width:52px; height:52px; border-radius:50%; border:1px solid rgba(255,255,255,.6); background:rgba(0,0,0,.2); color:#fff; display:inline-flex; align-items:center; justify-content:center; padding:0; cursor:pointer; }
+  .tv-c.big { width:76px; height:76px; border:0; background:none; }
+  .tv-c.big svg { width:50px; height:50px; filter:drop-shadow(0 2px 10px rgba(0,0,0,.45)); }
+  .tv-foot { position:absolute; left:0; right:0; bottom:0; display:flex; gap:12px; align-items:stretch; padding:0 18px calc(18px + env(safe-area-inset-bottom, 0px)); }
+  .tv-bar { flex:1; min-width:0; display:flex; align-items:center; gap:6px; height:58px; padding:0 18px; border-radius:30px; background:rgba(28,28,28,.74); -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px); color:#fff; }
+  .tb { width:38px; height:38px; flex:none; border:0; border-radius:50%; background:none; color:#fff; display:inline-flex; align-items:center; justify-content:center; padding:0; cursor:pointer; }
+  .tv-bar .tv-line { flex:1; min-width:40px; margin:0 8px; height:40px; }
+  .tv-bar .tv-track { top:18px; }
+  .tv-bar .tv-line:hover .tv-track, .tv-bar .tv-line.drag .tv-track { top:16px; }
+  .tv-now { position:absolute; left:0; top:-2px; transform:translateX(-50%); font:400 11px Arial, Helvetica, sans-serif; white-space:nowrap; }
+  .tv-total { font:400 12px Arial, Helvetica, sans-serif; min-width:36px; text-align:right; opacity:.85; }
+  .tv-pill { display:flex; align-items:center; gap:12px; height:58px; max-width:380px; padding:0 20px 0 9px; border-radius:30px; background:#fff; color:#000; cursor:pointer; }
+  .tv-pill em { font:400 15px Arial, Helvetica, sans-serif; font-style:normal; margin-left:4px; }
+  .tv-pill .pt b { font-size:14px; }
+  .tv-hud .tv-pill { pointer-events:none; }
+  .tv.show .tv-hud .tv-pill { pointer-events:auto; }
+  .tv-mode { position:absolute; right:22px; bottom:calc(88px + env(safe-area-inset-bottom, 0px)); background:none; border:0; color:rgba(255,255,255,.65); font:400 11px Arial, Helvetica, sans-serif; text-decoration:underline; cursor:pointer; }
+  .tv-ihead { padding-top:calc(64px + env(safe-area-inset-top, 0px)); }
+  .sr { position:fixed; inset:0; z-index:60; display:none; background:rgba(0,0,0,.94); -webkit-backdrop-filter:blur(16px); backdrop-filter:blur(16px); color:#fff; }
+  .sr.on { display:block; }
+  .sr-in { max-width:1180px; height:100vh; height:100dvh; margin:0 auto; display:flex; flex-direction:column; padding:calc(14px + env(safe-area-inset-top, 0px)) 18px calc(14px + env(safe-area-inset-bottom, 0px)); }
+  .sr-top { display:flex; justify-content:space-between; align-items:center; font:400 15px Arial, Helvetica, sans-serif; }
+  .sr-chat { flex:1; overflow-y:auto; padding:18px 0; }
+  .msg { max-width:90%; margin:0 0 16px; font:400 15px/1.5 Arial, Helvetica, sans-serif; white-space:pre-wrap; }
+  .msg.u { margin-left:auto; background:#fff; color:#000; padding:10px 16px; border-radius:20px 20px 4px 20px; }
+  .msg.a { color:#eee; }
+  .sr-sug { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+  .sr-sug .b { border-radius:999px; padding:8px 14px; font-size:13px; }
+  .res { display:grid; grid-template-columns:repeat(var(--rc,2),1fr); gap:8px; margin-top:12px; }
+  .rc { aspect-ratio:16/9; border:0; border-radius:14px; padding:10px 12px; text-align:left; color:#fff; display:flex; flex-direction:column; justify-content:flex-end; cursor:pointer; }
+  .rc b { font:400 13px/1.2 Arial, Helvetica, sans-serif; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .rc i { font:400 11px Arial, Helvetica, sans-serif; font-style:normal; opacity:.8; margin-top:3px; }
+  .msg .ctl { padding:12px 0 0; }
+  .sr-form { display:flex; align-items:center; gap:6px; padding:6px 6px 6px 20px; border-radius:32px; background:rgba(255,255,255,.12); }
+  .sr-form input { flex:1; min-width:0; background:none; border:0; outline:0; color:#fff; font:400 16px Arial, Helvetica, sans-serif; }
+  .sr-form .ic.rec { background:#fff; color:#000; animation:srpulse 1.2s ease-in-out infinite; }
+  @keyframes srpulse { 0%,100% { box-shadow:0 0 0 0 rgba(255,255,255,.55); } 50% { box-shadow:0 0 0 10px rgba(255,255,255,0); } }
+  @media (max-width:700px) {
+    .hd { grid-template-columns:1fr auto; padding:env(safe-area-inset-top, 0px) 10px 0; }
+    .logo { display:none; }
+    .hd-l { gap:6px; }
+    .nav { gap:14px; }
+    .nav button { font-size:13px; }
+    .bar.menu { left:8px; right:8px; width:auto; }
+    .pmenu { left:8px; right:8px; width:auto; }
+    .chips-r { display:none; }
+    .pill { max-width:calc(100% - 24px); }
+    .hero h1 { font-size:clamp(1.5rem,8vw,2.6rem); }
+    .herolink { bottom:calc(14px + env(safe-area-inset-bottom, 0px)); }
+    .tv-rb, .tv-bm { top:calc(64px + env(safe-area-inset-top, 0px)); width:40px; height:40px; }
+    .tv-rb { left:12px; } .tv-bm { right:12px; }
+    .tv-count { left:60px; top:calc(75px + env(safe-area-inset-top, 0px)); }
+    .tv-center { gap:18px; }
+    .tv-c { width:46px; height:46px; }
+    .tv-foot { flex-direction:column-reverse; gap:8px; padding:0 10px calc(12px + env(safe-area-inset-bottom, 0px)); }
+    .tv-bar { height:54px; padding:0 8px; gap:2px; }
+    .tv-pill { height:50px; max-width:none; padding:0 16px 0 7px; }
+    .tv-pill em { display:none; }
+    .tv-mode { right:14px; bottom:calc(142px + env(safe-area-inset-bottom, 0px)); }
+    .tv-infop { width:100vw; }
+    .tv-ibody { padding:4px 18px 48px; }
+    .pf-ctl { flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    .pf-ctl .b { flex:none; }
+    .pf-stage { height:calc(100dvh - 52px - 56px); }
+    .pf-art { padding:32px 16px 80px; }
+    .caps .capbar { overflow-x:auto; flex-wrap:nowrap; }
+    .capbar .b { flex:none; }
+    .sr-in { padding-left:14px; padding-right:14px; }
+  }
+  .emb { position:fixed; top:calc(62px + env(safe-area-inset-top, 0px)); left:50%; transform:translateX(-50%); z-index:58; width:min(580px, 92vw); display:flex; gap:14px; align-items:flex-start; padding:14px 16px; border-radius:16px; background:#fff; color:#000; font:400 13px/1.5 Arial, Helvetica, sans-serif; box-shadow:0 10px 40px rgba(0,0,0,.4); }
+  .emb[hidden] { display:none; }
+  .emb .b { flex:none; color:#fff; background:#000; border-color:#000; }
+  .out-box { height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; color:#fff; text-align:center; padding:20px; font-family:Arial, Helvetica, sans-serif; }
+  .out-box a { text-decoration:none; padding:10px 18px; border-radius:999px; font-size:13px; }
+  .tv-out { position:absolute; left:50%; top:60%; transform:translateX(-50%); z-index:3; background:#fff; color:#000; padding:12px 22px; border-radius:999px; font:400 14px Arial, Helvetica, sans-serif; text-decoration:none; }
+  h1, h2, h3, b, strong, th, dt { font-weight:400; }
+  .poster { background:#111; }
+  .rc { background:#1a1a1a; }
+  .tv-big.loading { animation:tvblink 1.1s ease-in-out infinite; }
+  @keyframes tvblink { 0%, 100% { opacity:.2; } 50% { opacity:1; } }
+  .msg.a.has-res { max-width:100%; }
+  .srv { display:flex; margin-left:auto; margin-right:12px; }
+  .srv button { background:none; border:1px solid #777; border-left-width:0; color:#fff; font:12px Arial, Helvetica, sans-serif; padding:7px 13px; cursor:pointer; }
+  .srv button:first-child { border-left-width:1px; }
+  .srv button.on { background:#fff; color:#000; border-color:#fff; }
+  .sr[data-rc="4"] .rc { padding:8px 10px; }
+  .sr[data-rc="4"] .rc b { font-size:11px; }
+  .sr[data-rc="4"] .rc i { font-size:10px; }
+  @media (max-width:700px) {
+    .sr[data-rc="2"] .res { grid-template-columns:1fr; }
+    .sr[data-rc="4"] .res { grid-template-columns:repeat(2,1fr); }
+  }
+
+  .hero { position:relative; background:#000; overflow:hidden; }
+  .hero-track { display:flex; height:100%; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+  .hero-track::-webkit-scrollbar { display:none; }
+  .hs { position:relative; flex:0 0 100%; height:100%; scroll-snap-align:start; scroll-snap-stop:always; background:#000; overflow:hidden; }
+  .hs-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.5; }
+  .hs-frame { position:absolute; inset:0; width:100%; height:100%; border:0; background:#000; }
+  .hs-c { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:min(88%,980px); text-align:center; color:#fff; }
+  .hero .hs-c h1 { position:static; transform:none; width:auto; font:400 clamp(2rem,5.5vw,4.6rem)/1.08 Arial, Helvetica, sans-serif; margin:0 0 14px; text-shadow:none; }
+  .hs-by { font:400 13px Arial, Helvetica, sans-serif; opacity:.7; margin-bottom:30px; }
+  .hs-row { display:flex; gap:18px; align-items:center; justify-content:center; }
+  .hs-play { background:#fff; color:#000; border:0; border-radius:999px; padding:12px 28px; font:400 14px Arial, Helvetica, sans-serif; cursor:pointer; }
+  .hs-link { background:none; border:0; color:#fff; font:400 14px Arial, Helvetica, sans-serif; text-decoration:underline; cursor:pointer; opacity:.8; }
+  .hs-x { position:absolute; top:calc(70px + env(safe-area-inset-top, 0px)); right:16px; z-index:3; width:40px; height:40px; border-radius:50%; border:0; background:#fff; color:#000; cursor:pointer; }
+  .hs > .ctl { position:absolute; left:16px; bottom:74px; z-index:4; padding:0; }
+  .hero-nav { position:absolute; left:0; right:0; bottom:calc(26px + env(safe-area-inset-bottom, 0px)); display:flex; justify-content:center; align-items:center; gap:18px; color:#fff; z-index:3; pointer-events:none; }
+  .hero-nav .hd-dot { pointer-events:auto; }
+  .hero-dots { display:flex; gap:8px; }
+  .hd-dot { width:7px; height:7px; border-radius:50%; border:0; padding:0; background:rgba(255,255,255,.35); cursor:pointer; }
+  .hd-dot.on { background:#fff; }
+  .hero-cnt { font:400 12px Arial, Helvetica, sans-serif; opacity:.8; }
+  .hero-arr { position:absolute; top:50%; transform:translateY(-50%); z-index:3; width:44px; height:44px; border-radius:50%; border:1px solid rgba(255,255,255,.45); background:rgba(0,0,0,.2); color:#fff; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; padding:0; }
+  .hero-arr svg { width:22px; height:22px; fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
+  .hero-arr.l { left:18px; } .hero-arr.r { right:18px; }
+  body:not(.tvon) .hd { background:transparent; -webkit-backdrop-filter:none; backdrop-filter:none; }
+  body:not(.tvon) .hd.solid { background:rgba(0,0,0,.9); -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px); }
+  html[data-theme="light"] body:not(.tvon) .hd:not(.solid) { color:#fff; }
+  html[data-theme="light"] body:not(.tvon) .hd.solid { background:rgba(255,255,255,.92); color:#000; }
+  .pill { background:none; -webkit-backdrop-filter:none; backdrop-filter:none; padding:0; gap:0; left:16px; bottom:14px; text-shadow:0 1px 10px rgba(0,0,0,.75); }
+  .pill .av { display:none; }
+  .chips-r span { border:0; background:none; padding:0; font-size:15px; text-shadow:0 1px 8px rgba(0,0,0,.7); }
+  html[data-theme] .fbar { background:transparent; color:inherit; border-bottom:1px solid rgba(128,128,128,.3); }
+  html[data-theme] .fbar .b { color:inherit; background:transparent; border-color:currentColor; }
+  .pf-art .capmsg2 { font-size:.8rem; opacity:.6; margin:8px 0 6px; line-height:1.4; }
+  .ofr { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:8px; margin-bottom:14px; }
+  .ofi { position:relative; background:#111; }
+  .ofi img { display:block; width:100%; aspect-ratio:16/9; object-fit:cover; }
+  .ofb { position:absolute; right:6px; bottom:6px; }
+  .agent { margin:30px 0; }
+  .agent textarea { width:100%; height:110px; margin:6px 0 10px; padding:10px; background:transparent; color:inherit; border:1px solid rgba(128,128,128,.45); font:14px Arial, Helvetica, sans-serif; }
+  .srcs { display:flex; flex-direction:column; gap:6px; margin-bottom:10px; }
+  .srcs .src { font-size:.85rem; line-height:1.4; color:inherit; opacity:.75; text-decoration:underline; }
+  .tv-ibody .srcs .src { color:#ccc; }
+  @media (max-width:700px) { .hs-x { top:calc(64px + env(safe-area-inset-top, 0px)); } .hs > .ctl { bottom:70px; } }
+  .views { display:flex; gap:12px; margin-right:6px; font:400 12px Arial, Helvetica, sans-serif; }
+  .views button { background:none; border:0; color:inherit; font:inherit; opacity:.5; padding:6px 2px; cursor:pointer; }
+  .views button.on { opacity:1; text-decoration:underline; text-underline-offset:4px; }
+  .hs-by { font-size:12px; }
+  .mini { background:none; border:0; padding:0; margin-left:10px; color:inherit; font:inherit; text-decoration:underline; text-underline-offset:3px; opacity:.85; cursor:pointer; }
+  .chip, .chip:hover, html[data-theme] .chip, html[data-theme] .chip:hover, html[data-theme] .tv-infop .chip, html[data-theme] .tv-infop .chip:hover { border:0 !important; background:none !important; padding:0 !important; color:inherit; font:400 .9rem Arial, Helvetica, sans-serif; text-decoration:underline; text-decoration-color:rgba(128,128,128,.5); text-underline-offset:3px; cursor:pointer; }
+  .chip:hover { text-decoration-color:currentColor; }
+  .pf-art dd, .tv-ibody dd, .chips, .tv-ibody .chips { gap:4px 16px; }
+  .sr-sug .b { border:0; background:none; padding:0; text-decoration:underline; text-underline-offset:3px; opacity:.85; }
+  @media (max-width:700px) { .views { gap:8px; margin-right:2px; } }
+  .hs-click { cursor:pointer; outline:none; }
+  body.nohero .grid { padding-top:calc(56px + env(safe-area-inset-top, 0px)); }
+  body.nohero:not(.tvon) .hd { background:rgba(0,0,0,.9); -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px); }
+  html[data-theme="light"] body.nohero:not(.tvon) .hd, html[data-theme="light"] body.nohero:not(.tvon) .hd:not(.solid) { background:rgba(255,255,255,.92); color:#000; }
+  .logo { font:400 11px/1 Arial, Helvetica, sans-serif; letter-spacing:.6em; text-transform:uppercase; }
+  .logo span { opacity:1; }
+  .nav button, .views button { text-transform:uppercase; letter-spacing:.16em; font-size:10px; }
+  .hs-code { font:400 11px Arial, Helvetica, sans-serif; letter-spacing:.22em; margin:0 0 22px; opacity:.8; }
+  .mf { max-width:1180px; margin:0 auto; padding:72px 24px 34px; }
+  body.nohero .mf { padding-top:calc(92px + env(safe-area-inset-top, 0px)); }
+  body.nohero .grid { padding-top:0; }
+  .mf p { font:400 clamp(1.1rem,2.3vw,1.7rem)/1.35 Arial, Helvetica, sans-serif; max-width:30em; }
+  .deps { display:flex; flex-wrap:wrap; gap:8px 28px; margin-top:30px; font:400 10px Arial, Helvetica, sans-serif; letter-spacing:.16em; text-transform:uppercase; }
+  .deps button { background:none; border:0; border-bottom:1px solid transparent; color:inherit; font:inherit; letter-spacing:inherit; text-transform:inherit; opacity:.5; padding:5px 0; cursor:pointer; }
+  .deps button:hover, .deps button.on { opacity:1; border-bottom-color:currentColor; }
+  .pt b { letter-spacing:.02em; }
+  .pill-p, .tv-bar, .tv-pill, .sr-form, .msg.u, .rc { border-radius:0; }
+  .tv-bar, .tv-pill { height:54px; }
+  @media (max-width:700px) { .mf { padding:56px 16px 24px; } .deps { gap:6px 18px; } .logo { letter-spacing:.4em; } }
   .seg { display:flex; align-items:center; gap:0; }
   .seg span { font:12px Arial, Helvetica, sans-serif; color:#fff; background:rgba(0,0,0,.7); border:1px solid #777; border-right:0; padding:6px 8px; }
   .seg button { border-left:0 !important; min-width:30px; }
@@ -156,8 +400,22 @@
 </style>
 </head>
 <body>
-<div class="bar"><button id="theme" type="button">☼ Blanco</button><div class="seg" id="cols"><span>Columnas</span><button type="button" data-n="2">2</button><button type="button" data-n="3">3</button><button type="button" data-n="6">6</button></div><button id="tvbtn" type="button">▶ Modo TV</button><button id="favs" type="button">★ Favoritos</button><button id="gest" type="button">Gestor</button><button id="bak" type="button" style="display:none">Copia</button><button id="mode" type="button">Reproductor: Tumblr</button></div>
+<header class="hd" id="hd">
+  <div class="hd-l"><button id="menu" class="ic" type="button" aria-label="Menú" data-ic="menu"></button><nav class="nav"><button id="nav-d" class="on" type="button">Discover</button><button id="nav-t" type="button">TV Mode</button></nav></div>
+  <div class="logo">VISION<span>NAIRE</span></div>
+  <div class="hd-r"><div class="views" id="cols"><button type="button" data-n="2">2</button><button type="button" data-n="3">3</button><button type="button" data-n="6">6</button></div><button id="search" class="ic" type="button" aria-label="Buscar con IA" data-ic="search"></button><button id="prof" class="pill-p" type="button" aria-label="Perfil"><span class="av" id="av">I</span><span id="pcount">0</span></button></div>
+</header>
+<div id="profmenu" class="pmenu"><div class="pm-h"><span class="av big" id="av2">I</span><span id="pname">Invitado</span></div><button id="pm-fav" class="pm" type="button">★ Mis favoritos</button><button id="pm-ged" class="pm" type="button">Gestor de vídeos</button><button id="pm-bak" class="pm" type="button">Copia de seguridad</button></div>
+<div id="sr" class="sr" aria-hidden="true">
+  <div class="sr-in">
+    <div class="sr-top"><span>Buscar con IA</span><div class="srv" id="sr-cols"><button type="button" data-n="2">2</button><button type="button" data-n="4">4</button></div><button id="sr-x" class="ic" type="button" aria-label="Cerrar" data-ic="close"></button></div>
+    <div id="sr-chat" class="sr-chat"></div>
+    <div class="sr-form"><input id="sr-q" placeholder="Escribe o pulsa el micrófono…" autocomplete="off"><button id="sr-mic" class="ic" type="button" aria-label="Voz" data-ic="mic"></button><button id="sr-go" class="ic" type="button" aria-label="Enviar" data-ic="send"></button></div>
+  </div>
+</div>
+<div class="bar menu" id="menu-pop"><button id="theme" type="button">☼ Blanco</button><button id="tvbtn" type="button">▶ Modo TV</button><button id="favs" type="button">★ Favoritos</button><button id="gest" type="button">Gestor</button><button id="bak" type="button" style="display:none">Copia</button><button id="mode" type="button">Reproductor: directo</button></div>
 <section class="hero" id="hero"></section>
+<section class="mf" id="mf"><p>Archivo de vídeo de moda y cultura visual ordenado por un sistema de números: cada departamento clasifica un tipo de pieza. Pulsa un número para filtrar.</p><div class="deps" id="deps"></div></section>
 <div id="fbar" class="fbar" hidden></div>
 <main class="grid" id="grid"></main>
 
@@ -170,19 +428,52 @@
 
 <div id="tv" class="tv" aria-hidden="true">
   <div class="tv-scroll" id="tv-scroll"></div>
+  <div id="tv-big" class="tv-big"></div>
+  <aside id="tv-infop" class="tv-infop" aria-hidden="true">
+    <div class="tv-ihead"><button id="tv-iclose" class="ic" type="button" aria-label="Cerrar" data-ic="close"></button></div>
+    <div class="tv-ibody" id="tv-ibody"></div>
+  </aside>
   <div class="tv-hud">
-    <div class="tv-top"><button id="tv-exit" class="b" type="button">✕ Salir</button><span id="tv-count"></span><span id="tv-title"></span><button id="tv-full" class="b" type="button">Pantalla completa</button></div>
-    <div class="tv-bottom">
-      <input id="tv-seek" type="range" min="0" max="1000" value="0" aria-label="Posición">
-      <div class="tv-row"><span id="tv-time"></span>
-        <div class="tv-btns"><button id="tv-prev" class="b" type="button">↑ Anterior</button><button id="tv-play" class="b" type="button">Pausa</button><button id="tv-next" class="b" type="button">Siguiente ↓</button><button id="tv-mute" class="b" type="button">Sonido</button><button id="tv-fav" class="b" type="button">☆ Favorito</button><button id="tv-info" class="b" type="button">Ficha</button><button id="tv-mode" class="b" type="button"></button></div>
+    <button id="tv-exit" class="tv-rb" type="button" aria-label="Volver a Discover" data-ic="back"></button>
+    <span id="tv-count" class="tv-count"></span>
+    <button id="tv-fav" class="tv-bm" type="button" aria-label="Favorito" data-ic="bm"></button>
+    <div class="tv-center"><button id="tv-b10" class="tv-c" type="button" aria-label="Retroceder 10 s" data-ic="b10"></button><button id="tv-cplay" class="tv-c big" type="button" aria-label="Play o pausa"></button><button id="tv-f10" class="tv-c" type="button" aria-label="Avanzar 10 s" data-ic="f10"></button></div>
+    <button id="tv-mode" class="tv-mode" type="button"></button>
+    <div class="tv-foot">
+      <div class="tv-bar">
+        <button id="tv-play" class="tb" type="button" aria-label="Play o pausa"></button>
+        <button id="tv-prev" class="tb" type="button" aria-label="Anterior" data-ic="up"></button>
+        <button id="tv-next" class="tb" type="button" aria-label="Siguiente" data-ic="down"></button>
+        <div id="tv-line" class="tv-line off" aria-label="Línea de tiempo"><span id="tv-now" class="tv-now"></span><div class="tv-track"><div class="tv-fill" id="tv-fill"></div><div class="tv-knob" id="tv-knob"></div></div></div>
+        <span id="tv-time" class="tv-total"></span>
+        <button id="tv-mute" class="tb" type="button" aria-label="Sonido"></button>
+        <button id="tv-full" class="tb" type="button" aria-label="Pantalla completa" data-ic="full"></button>
       </div>
+      <div id="tv-info" class="tv-pill" role="button" tabindex="0"><span class="av" id="tv-av"></span><span class="pt"><b id="tv-title"></b><i id="tv-by"></i></span><em id="tv-plat"></em></div>
     </div>
     <div id="tv-toast" class="tv-toast"></div>
   </div>
 </div>
 
+<div id="emb" class="emb" hidden><span id="emb-t"></span><button id="emb-x" class="b" type="button">Entendido</button></div>
+
 <script>
+var EMB = { frames: false, imgs: false };
+function embNotice() {
+  var b = document.getElementById("emb"), t = document.getElementById("emb-t");
+  if (!b || b.dataset.closed) return;
+  t.textContent = EMB.frames
+    ? "Este visor bloquea los reproductores de YouTube y Vimeo (y sus imágenes). Pulsa «Ver en YouTube/Vimeo» para abrir cada vídeo en su plataforma. Para verlos aquí dentro, descarga visionnaire.html y ábrelo desde tu propia web (https) o en un navegador."
+    : "Este visor bloquea las imágenes externas: verás degradados de color en lugar de los pósters.";
+  b.hidden = false;
+}
+document.addEventListener("securitypolicyviolation", function (e) {
+  var d = e.effectiveDirective || e.violatedDirective || "", u = String(e.blockedURI || "");
+  if (/frame|child/.test(d) && /youtube|vimeo|txmblr/.test(u)) { EMB.frames = true; embNotice(); }
+  else if (/img/.test(d) && /ytimg|vumbnail|vimeocdn/.test(u)) { EMB.imgs = true; embNotice(); }
+});
+var OPAQUE = (function () { try { return location.origin === "null" || !/^https?:$/.test(location.protocol); } catch (e) { return true; } })();
+function needProxy(v) { return v[0] === "y" && OPAQUE; }
 // [plataforma, id, título, parámetro extra]
 var DEFAULTS = [
  ["y","2poI7LCnHM4","2026 Intelligent Eyewear Campaign with Joaquin Phoenix – Teaser"],
@@ -247,11 +538,18 @@ var E = ["Encargar una campaña de gafas inteligentes a un director de cine sit�
 DEFAULTS.forEach(function (d, i) { d[4] = A[i][0]; d[5] = A[i][1]; d[6] = M[i]; d[8] = E[i]; });
 var MORE = [["v", "1239605098", "Backstage at Calvin Klein Collection S27", "", "Backstage de la colección S27 de Calvin Klein, con Veronica Leoni como directora creativa.", "Dirección y fotografía: Peter Spark;Montaje: Nicole Cimei;Dirección creativa: Veronica Leoni;Creativa CK: Hollie Pollack", "Marca: Calvin Klein;Tipo: Backstage;Temática: Pasarela, Primavera-verano 2027"], ["v", "1198494738", "crocs x vibram", "", "Campaña de Solebox, Crocs y Vibram dirigida por Julius Preusser desde Studio Draußen, con etiqueta de estética oscura.", "Dirección: Julius Preusser;DOP: @moxut;Producción: Studio Draußen;Productor: @robinuthx;Fotografía fija: @oskar.ott;Gaffer: @oskar.ott;Best boy: @actionbryanson;HMU: @nil.strz;Estilismo: @__jmalin;Diseño de set: @nikehartmond;Cliente: Solebox, Crocs, Vibram;Casting: @halo__models;Talento: @vova_kaps;Montaje: @rrrdominik;Color: @kingofcurtis, @sec.studio, @worldofmakemake;Música y sonido: @alessandromarinelli___;Laboratorio: @andecfilm, @ludwighagelstein", "Marca: Crocs, Vibram, Solebox;Tipo: Campaña;Temática: Calzado, Oscuro"], ["v", "1166678315", "Nike x Syna World", "", "Pieza de Nike con Syna World. El post no incluye descripción; las etiquetas citan a Julien Alary, Walid Labri y Jack Exton.", "Créditos no indicados en el post", "Marca: Nike, Syna World;Tipo: Campaña"], ["v", "1196800184", "die neue sammlung", "", "Pieza sobre objetos y una silla para Die Neue Sammlung; la etiqueta cita a Jonas Kleinalstede.", "Créditos no indicados en el post", "Marca: Die Neue Sammlung;Tipo: Pieza de objeto;Temática: Objetos, Silla, Diseño"], ["v", "1012015345", "Stefan Marx “the prettiest of skies”", "", "Colaboración entre Solebox, Lufthansa y el artista Stefan Marx, que toma la aviación y el plane spotting como inspiración e incluye una taza para KPM Berlin.", "Etiqueta: Julius Preusser", "Marca: Solebox, Lufthansa;Tipo: Colaboración;Temática: Aviación, Arte, Tipografía;Lugar: Frankfurt"], ["v", "1234553180", "Birkenstock Highwood Moc", "", "Campaña de Solebox para el Highwood Moc de Birkenstock, con Paulina y Juwon como protagonistas.", "Dirección: Julius Preusser;DOP: Christoph Schramm;Producción: Studio Draußen;Productor: @robinuthx;Fotografía fija: @christiansauerland_;Gaffer: @oskar.ott;HMU: @parnia_sar;Estilismo: @__jmalin;Cliente: Solebox;Casting: @neu_casting, @wiener_models;Montaje: @rrrdominik;Color: @didrikbrathen, @tmls.tv;Música y sonido: @alessandromarinelli___;Laboratorio: @andecfilm, @ludwighagelstein", "Marca: Birkenstock, Solebox;Tipo: Campaña;Temática: Calzado"], ["v", "1134682837", "Object installation by Xaver Kuster for Mono Germany", "", "Instalación de objetos de Xaver Kuster para Mono Germany, producida por Studio Draußen y rodada con colaboración de Kodak.", "Dirección: Jonatan Langendorf, Julius Preusser;Producción: Studio Draußen, @robinuthx;DOP: @moxut;1st AC: @jura_nicolas;2nd AC: @theresakueblbeck;Luz: @oskar.ott;Grip: @big_friendly_grip;Diseño de set: @xhansiwimmerx;Fotografía fija: @oskar.ott;Montaje: @rrrdominik, @theresakueblbeck;Color: @mikeypackage;Música y sonido: @nikibaerchen;Estilismo: @teglasy.hanna;HMU: @parnia_sar;Agradecimientos: @cinegrell, @arri_rental, @royal.muster, @kodak_shootfilm", "Marca: Mono Germany;Tipo: Instalación de objetos;Temática: Diseño, Objetos;Formato: Kodak"], ["y", "qOoCl5TFDqI", "ALAÏA Summer Fall 26 — Episode 01: Bodycon", "", "Primero de tres episodios en los que el crítico Alexander Fury explora las conexiones entre la colección Verano-Otoño 2026 y los archivos de Alaïa; el cuerpo como punto de partida de la creación.", "Presenta: Alexander Fury;Vídeo: Chanel Moye", "Marca: Alaïa;Tipo: Serie documental (episodio 1);Temática: Cuerpo, Silueta, Archivo"], ["y", "IK7ct1IgAW8", "HUGO BOSERUP", "", "Vídeo de skate con vistas de dron para Stüssy, con Hugo Boserup.", "Vídeo: Jesse Alba, Antosh Cimoszko", "Marca: Stüssy;Tipo: Vídeo de skate;Temática: Skate, Dron"], ["y", "6sEibBapM3U", "mes° beauty | Come as you are", "", "Lanzamiento de Mes°, la marca de Jennifer Lawrence (@jlaw): un film de Isaac Lock sobre el deseo imposible de olvidarnos a nosotros mismos, construido sobre la confianza en sus protagonistas y en el proceso.", "Dirección: Isaac Lock;Dirección creativa: Isaac Lock;Cliente: @mesbeauty;Productora: Somesuch;EP: @anyanwu, Luigi Rossi, Francesco Rizzo;Productor: @sergiomvaccaro;DOP: @maximilianpittner;1st AD: James Woods;Dirección de movimiento: @celiarowlsonhall;Diseño de producción: @rosie__turnbull;Dirección de arte: @mushbone;Estilismo: @zaraeloise;Casting: @jesuiscasting;Montaje: @lainyblack;Postproducción: Society Post House;Color: @m.y.l.e.s (Modern Post);Supervisión musical: @jonrust_", "Marca: Mes° Beauty;Tipo: Película de lanzamiento;Temática: Belleza, Danza"], ["y", "1pyT7aq-iko", "LOEWE Spring Summer 2027 precollection campaign", "", "Campaña de la precolección primavera-verano 2027 de Loewe, con Kristine Frøseth, Jiang Qiming, Victoria Luengo y Diego Calva.", "Dirección: Julian Klincewicz;Reparto: Kristine Frøseth, Jiang Qiming, Victoria Luengo, Diego Calva", "Marca: Loewe;Tipo: Campaña;Temática: Precolección, Primavera-verano 2027"], ["v", "1121056448", "Ambush+Ugg", "", "Colaboración de Ambush y Ugg ambientada en Tokio con el kárate como tema, protagonizada por Yuki Chiba.", "Dirección creativa: Yoon Ambush;Guion y dirección: Xavier Tera;Producción: Twin Brains;EP: Janie Chartier;Productoras: Lauren Sing, Mathilda Ma;DOP: Gianpaolo Lupori;1st AD: Yasutomi Shimizu;Montaje: Xavier Tera;Montaje online: Shane Lester;Música y sonido: Supersavant;Color: Simon Boisx (Arketype);Diseño de títulos: Samuel Rhodes;Estilismo: Shun Watanabe;Diseño de producción: Charlotte Chan;Maquillaje: Shinya Kumazaki;Peluquería: Kaz Fujiwara;Casting: Yuuki Sakamoto;Protagonista: Yuki Chiba", "Marca: Ambush, Ugg;Tipo: Colaboración;Temática: Kárate, Cultura de calle;Lugar: Tokio"], ["v", "1238057118", "Olga Basha – Good Morning America", "", "Fashion film de Olga Basha dirigido por Matias & Mathias.", "Dirección: Matias & Mathias;Productora: Epoch Films;Productor: @jakeagger;DOP: Doug Durant;Montaje: @carlaluffe;Color: Julien Alary (TMLS);Diseño de sonido: @deadgeoff;Compositor: @officialmisterzachary;Fotografía fija: @simonsfinnerty", "Marca: Olga Basha;Tipo: Fashion film"], ["y", "DFEVcUWhzrk", "Marine Serre 2026AW Campaign", "", "Campaña FW26 «The Grace of Time»: la feminidad a través de la naturaleza, rodada en los paisajes de Normandía con los cuatro elementos como hilo conductor.", "Dirección: Aymane Alhamid;DOP: Bernardo Infante;1st AC: Henri Cosson;Gaffer: Ulysse Branchereau;Diseño de set: Joris Navarro;Estilismo: Marine Lescieux, Eliott Marchet;Peluquería: Aurore Lebacle;Maquillaje: Toma Marandeau;Producción: VANTA;Productores: Marc-Antoine Brouard, Emile Sarda;1st AD: Julia Aner", "Marca: Marine Serre;Tipo: Campaña;Temática: Feminidad, Naturaleza, Cuatro elementos;Lugar: Normandía"], ["y", "CEdkjkrLQoM", "Maison Margiela x Gentle Monster", "", "Un trayecto de diez minutos por la ciudad que se ralentiza con una serie de personajes; cuarto capítulo de la serie, dirigido por Alex Prager.", "Dirección: Alex Prager", "Marca: Maison Margiela, Gentle Monster;Tipo: Fashion film (capítulo 4);Temática: Ciudad, Extrañeza"], ["y", "XW-2fyehwdY", "Florence Welch in the new Gucci High Jewelry collection Hortus Deliciarum", "", "Corto de Laura Jane Coulson con Florence Welch adornada con la colección Hortus Deliciarum de Alessandro Michele, paseando por la boutique Gucci Vendôme.", "Dirección: Laura Jane Coulson;Protagonista: Florence Welch;Dirección creativa: Alessandro Michele;Música: Florence Welch, Emilie Haynie, Thomas Bartlett", "Marca: Gucci;Tipo: Corto de alta joyería;Temática: Joyería, Música"], ["v", "1096628067", "Nike Elite Summit", "", "Pieza de Nike; la etiqueta cita a Julius Preusser.", "Créditos no indicados en el post", "Marca: Nike;Tipo: Pieza de marca"], ["y", "D8y7WCUo9aQ", "why Prada does it better", "", "Vídeo-ensayo de Tuba Avalon sobre la falda en la colección SS27 de Miuccia Prada y Raf Simons.", "Autor: Tuba Avalon;Montaje: Alek Potier", "Marca: Prada;Tipo: Vídeo-ensayo;Temática: Análisis, Crítica, Primavera-verano 2027"], ["v", "912598393", "Sin título (Prada)", "", "Post sin título ni texto; las etiquetas citan a PJ Lam y a Prada.", "Créditos no indicados en el post", "Marca: Prada;Tipo: Pieza de marca"], ["v", "1173329214", "Goldwin 0 – Enquiry #5.2 ‘Collective Study’", "", "Segundo episodio de Enquiry #5, resultado de una residencia creativa de diseño, poesía, arte y música: un espacio de experimentación para prototipos y nuevas prácticas.", "Dirección: Oliver Knight, Rory McGrath (OK-RM);Montaje: Tom Chick;Fotografía (Tokio): Gaku Kamimura, Yudai Maruyama;Fotografía (Londres): Joseph Reddy;Diseñadora en residencia: Nur Abbas;Poeta en residencia: Lila Matsumoto;Artista en residencia: Karl Nawrot;Músico en residencia: H.Takahashi;Dirección musical: MLM.IV;Diseño gráfico: OK-RM, Barnaby Mills;Producción (Tokio): Saka Matsushita;Color: Alexey Moskvin;Mezcla de sonido: Tommy Wallwork", "Marca: Goldwin 0;Tipo: Película de residencia;Temática: Colaboración, Diseño, Poesía, Música;Lugar: Tokio, Londres"], ["v", "1070783280", "STONE ISLAND – MATERIAL SCIENCE", "", "Película de Stone Island titulada «Material Science», dirigida por Theodor Guelat.", "Dirección: Theodor Guelat;Productora: Wildframe;DOP: Gian Oliva;Montaje: @y_nixi;Diseño de sonido: @alessandromarinelli___;VFX: Genera;Color: @herebobo;1AC: @jonasongaro;2AC: @valchiarello;Gaffer: @joskacchi", "Marca: Stone Island;Tipo: Película de marca;Temática: Materiales, Ciencia"], ["v", "1208135092", "KORG – Phase8", "", "Ana Roxanne recorre Berlín recogiendo pequeñas huellas táctiles de la ciudad y descubriendo su potencial musical; dirige Jeroen Dankers.", "Dirección: Jeroen Dankers;Protagonista: Ana Roxanne;Música: Natural Wonder Beauty Concept (Ana Roxanne, DJ Python)", "Marca: KORG;Tipo: Película de producto;Temática: Música, Ciudad;Lugar: Berlín"], ["v", "1229540491", "Shani is on set", "", "Pieza «Shani is on set», dirigida por Gosia Turczyńska.", "Dirección: Gosia Turczyńska;DOP: Leo Jean-Joachim;Montaje: Leo Jean-Joachim;Color: Leo Jean-Joachim;Dirección de moda: Milena Zhu;Estilismo: @fabiolous.fabs, @obengala;Talento: Shani;Peluquería: @tymotynasty;Maquillaje: @natsukimua;Manicura: @christineph0;Diseño de set: @cla.rak;Casting: @rafaeloferreira;Producción: @raven_doing_things", "Tipo: Fashion film;Temática: Retrato"], ["y", "OUMLLU95nH0", "RIMOWA | Hideo Kojima, a master storyteller", "", "Hideo Kojima comparte su proceso creativo ante la cámara de Otman Qrita mientras prepara su juego «OD - Knock»: la tecnología narra emoción mediante captura de movimiento.", "Dirección: Otman Qrita;Protagonista: Hideo Kojima", "Marca: Rimowa;Tipo: Retrato documental;Temática: Videojuegos, Creación, Tecnología"], ["y", "zorrUvbxgSE", "Alastair McKimm On Gratitude & an Addictive Personality | What’s Contemporary Now?", "", "Entrevista en el podcast What’s Contemporary Now? con Alastair McKimm sobre su salida de i-D tras 23 años y el lanzamiento de Prototype; la curaduría y la edición como claves de lo contemporáneo.", "Entrevistado: Alastair McKimm;Presenta: Christopher Michael;Producción: Sasha Grinblat;Postproducción y redes: Chase Coughlin;Dirección: Kyleen James;Música: Joseph Topmiller, Chase Coughlin (The Black Soft)", "Tipo: Entrevista / podcast;Temática: Edición, Revistas, Creatividad"], ["v", "1236153827", "EIBHLÍN ALBERT-DORAN // ACNE STUDIOS", "", "Colaboración que comparte los códigos creativos y las metodologías experimentales de Chalayan y de Jonny Johansson, director creativo de Acne Studios; colección de edición limitada.", "Dirección de arte: Eibhlín Albert-Doran;Fotografía: Heikki Kaski;Dirección: Rafa de Pazos;Diseño de set: Paulina Piipponen", "Marca: Acne Studios;Tipo: Colaboración;Temática: Proceso, Atelier, Experimentación"], ["v", "1018839647", "Nighthawk: Maison Margiela Artisanal 2024 Film", "", "Film de Maison Margiela sobre la creación de su colección Artisanal 2024, con elementos de terror y documental que exploran la ilusión y la realidad. Concepto original de John Galliano; estreno el 30 de septiembre de 2024 en Cinema Le Balzac, París.", "Dirección: Sasha Kasiuha;Concepto: John Galliano;Dirección de imagen artística: Alexis Roche;Estilismo del desfile: Olivier Rizzo;Maquillaje: Pat McGrath;Peluquería: Duffy;Dirección de sonido: Jeremy Healy;Producción (París): 109 Paris;Producción (Ucrania): Seek Studio;Dirección de arte: Kostya Sen;Montaje: Kateryna Muzhychuk, Sveta Symakova, Nuno Xico;Color: Kostiantyn Semerei;VFX: Eugene Lekh;Música: Wavewalkrs;Reparto: Kim Kardashian, Gwendoline Christie, Monica Bellucci", "Marca: Maison Margiela;Tipo: Film de colección;Temática: Alta costura, Terror, Documental, Ilusión;Lugar: París"], ["v", "1235264374", "LOEWE × On 2026.10.14", "", "Pieza de Loewe con On fechada el 14 de octubre de 2026.", "Créditos no indicados en el post", "Marca: Loewe, On;Tipo: Colaboración;Temática: Calzado deportivo"], ["v", "1185087309", "LOEWE – Making Of Amazona", "", "Making of de Amazona, de Loewe; las etiquetas citan a Roberto Colombo y hablan de proceso y atelier.", "Etiqueta: Roberto Colombo", "Marca: Loewe;Tipo: Making of;Temática: Proceso, Atelier"], ["v", "1143579209", "Fonderia Fendi by Conie Vallese", "", "Pieza sobre la fundición de Fendi; las etiquetas citan a Roberto Colombo y hablan de proceso y atelier.", "Etiqueta: Roberto Colombo", "Marca: Fendi;Tipo: Documental breve;Temática: Proceso, Atelier, Fundición"], ["v", "1197442578", "GIVENCHY AW26 Show", "", "Desfile otoño-invierno 2026 de Givenchy en la Paris Fashion Week.", "Etiqueta: Roberto Colombo", "Marca: Givenchy;Tipo: Desfile;Temática: Pasarela, Otoño-invierno 2026;Lugar: París"], ["v", "1235480287", "PRADA Making Of Re-Wool & Re-Cashmere", "", "Making of de las líneas Re-Cashmere y Re-Wool de Prada, dirigido y fotografiado por Roberto Colombo.", "Dirección: Roberto Colombo;DOP: Roberto Colombo;Producción: Squalo Produzioni;EP: Riccardo Barone;Producción de contenido Prada: Giulia Vergani;Dirección de arte Prada: Luca Federico, Anna Meck;1st AC: Riccardo Gilardenghi;2nd AC: Sacha Beverini;Gaffer: Davide Lionello;Grip: Andrea Comi;Montaje: Enrico Abbattista;Música, sonido y mezcla: Matthias Müller;Color: Leonardo Masoero", "Marca: Prada;Tipo: Making of;Temática: Proceso, Atelier, Materiales"], ["y", "ThOtiBPBwOo", "LOEWE and On — Designed for artistic exploration", "", "Nueva colección de Loewe y On con los artistas Joan Jonas, Tarek Atoui y Martine Syms.", "Artistas: Joan Jonas, Tarek Atoui, Martine Syms", "Marca: Loewe, On;Tipo: Colaboración;Temática: Arte, Calzado deportivo"], ["y", "CcX7Ah9QYMc", "Loro Piana Fall/Winter 2026-2027 Campaign", "", "Campaña FW26-27 que dialoga con los colores y texturas del paisaje cultural de los de Menil, de la Menil Collection a la Rothko Chapel (Houston): arte, estilo y vida diaria se disuelven entre sí.", "Dirección creativa: Atelier Franck Durand;Dirección de arte: Édouard Martin-Rilhac;Dirección: Luca Werner;DOP: Tobias Blickle;Montaje: Quentin Kwiat;Color: @vinhitooo;Música: Bruit Agency;Diseño de sonido y mezcla: Baptiste Luis;1st AD: @haitianev;Steadicam: @steadijew;Casting: Ashley Brokaw;Estilismo: Aleks Woro;Peluquería: Tomo Jidai;Maquillaje: Aaron De Mey;Producción: Holmes Production;Postproducción: Icecream Paris", "Marca: Loro Piana;Tipo: Campaña;Temática: Arte, Arquitectura, Vida cotidiana;Lugar: Houston (Menil Collection, Rothko Chapel)"], ["y", "fxSpme46mTc", "RIMOWA | Ultramarine and Umber", "", "La historia completa del viaje de un artista para instalarse en su nuevo hogar, con dos tonos de otoño 2026: Ultramarine y Umber.", "Créditos no indicados en el post", "Marca: Rimowa;Tipo: Corto de marca;Temática: Hogar, Color"], ["y", "vgcJr3CRZgg", "Miu Miu Spring Summer 2027 Fashion Show | Behind the Scenes with Petra Collins & Jasper Funk", "start=74", "Detrás de las cámaras del desfile SS27 de Miu Miu: Petra Collins y Jasper Funk muestran las dos caras de la pasarela y lo que ocurrió antes de que empezara el desfile.", "Presentan: Petra Collins, Jasper Funk", "Marca: Miu Miu;Tipo: Backstage;Temática: Pasarela, Primavera-verano 2027;Lugar: París"], ["v", "1234331549", "ZARA PREOWNED", "", "Pieza de Zara Preowned dirigida por María Sosa Betancor.", "Dirección: María Sosa Betancor;Dirección creativa: Querida;Producción: 13 1 13 4;Productor: @gingilus;Fotografía: Adrià Cañameras;Dirección de arte: Adrià Escribano;Estilismo: @tesrosmeri;Texto: @ielms;Montaje: @tarchupipa;Música: @industries_soniques;Color: The Post Office", "Marca: Zara;Tipo: Campaña;Temática: Segunda mano"], ["y", "Vp3y99NnD1k", "Valentino Antibiblioteca | SS27 Show", "", "Desfile SS27 de Valentino en la Bibliothèque Sainte-Geneviève de París: cada silueta como un libro sin leer, con las vidas que podríamos haber vivido.", "Dirección creativa: Alessandro Michele", "Marca: Valentino;Tipo: Desfile;Temática: Pasarela, Primavera-verano 2027, Biblioteca;Lugar: París"], ["v", "1233781671", "ZARA – PABLO PABLO", "", "Pieza musical de Zara con Pablo Pablo; las etiquetas citan a Enrique Villaluenga, Kito Muñoz y Candela Capitán, entre otros.", "Etiqueta: Enrique Villaluenga", "Marca: Zara;Tipo: Pieza musical;Temática: Música, Canción"], ["y", "eWOl2RhllrE", "Women’s Spring-Summer 2027 Show I LOUIS VUITTON", "", "Desfile en directo de la colección SS27 de Nicolas Ghesquière para Louis Vuitton, presentado en París el 6 de octubre.", "Dirección creativa: Nicolas Ghesquière", "Marca: Louis Vuitton;Tipo: Desfile;Temática: Pasarela, Primavera-verano 2027;Lugar: París"], ["v", "1162801329", "Maje SS26 directed by Juana Wein", "", "Campaña SS26 de Maje dirigida por Juana Wein, con agencia creativa Convoy y producción de Studio Demi.", "Dirección: Juana Wein;Agencia creativa: Convoy;Producción: Studio Demi", "Marca: Maje;Tipo: Campaña;Temática: Primavera-verano 2026"], ["v", "1068251936", "LVMH PRIZE", "", "Película del LVMH Prize dirigida por Samuel Rixon junto a los diseñadores finalistas, rodada en 35 mm (Kodak 5213 200T).", "Dirección: Samuel Rixon;Dirección creativa: Fabrice Paineau (Double Magazine);Productor: Jonas Kachelhoffer;DOP: Maxime Berger;1AC: Martin Grillet;Gaffer: Maxime Chs;Key grip: Paul Colange;Diseño de set: Oualid Boudrar;Estilismo: Rae Boxer;Maquillaje: Siddhartha Simone;Peluquería: @ramoneyluv;Montaje: Cobi Byrne;Postsonido: Echo Bravo Studio;Color: Dylan Hageman;Fotografía fija: Josephine Lochen", "Marca: LVMH Prize;Tipo: Película de premio;Temática: Diseñadores emergentes;Formato: Kodak 5213 200T, 35 mm"], ["v", "1232988057", "Clara Cullen | FENDI | SS27", "", "Desfile SS27 de Fendi en la Paris Fashion Week; la etiqueta cita a Clara Cullen.", "Etiqueta: Clara Cullen", "Marca: Fendi;Tipo: Desfile;Temática: Pasarela, Primavera-verano 2027;Lugar: París"], ["y", "V4B4YTvC6tg", "Prada Fall/Winter 2026 Campaign “Simple Stories”", "", "Campaña FW26 de Prada, de Miuccia Prada y Raf Simons: lo simple y honesto como antídoto a la complejidad de la vida, con escenas de intimidad doméstica a través de la mirada de Barry Jenkins y los embajadores Kelvin Harrison Jr., Hunter Schafer, Chen Haoyu y Troye Sivan.", "Dirección: Barry Jenkins;Dirección creativa: Miuccia Prada, Raf Simons;Reparto: Kelvin Harrison Jr., Hunter Schafer, Chen Haoyu, Troye Sivan", "Marca: Prada;Tipo: Campaña;Temática: Intimidad doméstica, Cine, Cotidiano"], ["y", "_dI4XCWpO6w", "Prada Fall/Winter 2026 | Mickey Galvin on “Simple Stories”", "", "Mickey Galvin reflexiona sobre la campaña «Simple Stories» de Prada FW26 y las escenas de intimidad doméstica reencuadradas por Barry Jenkins.", "Narrador: Mickey Galvin;Dirección: Barry Jenkins;Dirección creativa: Miuccia Prada, Raf Simons;Reparto: Chen Haoyu, Kelvin Harrison Jr., Hunter Schafer, Troye Sivan", "Marca: Prada;Tipo: Comentario;Temática: Análisis, Cine, Cotidiano"], ["y", "AUXmDmvD-tc", "Re{form} Zara", "start=961", "Re{form} Zara Vol. 1, «escrito» por el couturier John Galliano: una película sobre el proceso, basada en un concepto original suyo y dirigida por Sasha Kasiuha.", "Dirección: Sasha Kasiuha;Concepto: John Galliano", "Marca: Zara;Tipo: Película de proceso;Temática: Proceso, Memoria, Colección"], ["y", "mIsFARBSg0E", "Miu Miu Spring/Summer 2027 Fashion Show", "start=2959", "Desfile SS27 de Miu Miu en la Paris Fashion Week.", "Créditos no indicados en el post", "Marca: Miu Miu;Tipo: Desfile;Temática: Pasarela, Primavera-verano 2027;Lugar: París"], ["y", "ug5z6P_w_kk", "Lacoste Spring-Summer 2027 Runway Show", "", "Desfile SS27 de Lacoste con música de Lou Reed (remix de Looks) y de Looks.", "Música: Lou Reed (remix de Looks), Looks", "Marca: Lacoste;Tipo: Desfile;Temática: Pasarela, Primavera-verano 2027;Lugar: París"], ["y", "En4O3APhfK0", "LOEWE but the NEW NEW LOEWE! with Jack McCollough & Lazaro Hernandez! By Loïc Prigent", "", "Loïc Prigent acompaña las pruebas de la colección SS27 de Loewe, con los directores creativos Jack McCollough y Lazaro Hernandez, antes del desfile en el Château de Vincennes: una dosis de terapia de color.", "Dirección: Loïc Prigent;Filmado con: Albert Oziouls;Montaje: Konstantin Maslakov;Sonido: Clément Duché;Producción: Natacha Morice, Rafaële Nix (Secondi para DERALF)", "Marca: Loewe;Tipo: Backstage / entrevista;Temática: Color, Artesanía, Primavera-verano 2027;Lugar: París"], ["y", "rCWZwVZ2yYM", "GIVENCHY | Summer 2027 Womenswear Show", "", "Desfile de verano 2027 de Givenchy, de Sarah Burton, con música de Buttechno, Maya Beiser, Reinartz, Dobrawa Czocher y Ezio Bosso.", "Dirección creativa: Sarah Burton;Estilismo: Camilla Nickerson;Casting: Jess Hallett;Peluquería: Guido Palau;Maquillaje: Lucia Pieroni;Manicura: Ama Quashie;Escenografía: James Chinlund;Música: Frederic Sanchez", "Marca: Givenchy;Tipo: Desfile;Temática: Pasarela, Verano 2027;Lugar: París"], ["y", "BL42IhPi1RY", "LOEWE Spring Summer 2027 Show", "", "Desfile SS27 de Loewe en directo desde París, con Jack McCollough y Lazaro Hernandez.", "Dirección creativa: Jack McCollough, Lazaro Hernandez", "Marca: Loewe;Tipo: Desfile;Temática: Pasarela, Primavera-verano 2027;Lugar: París"], ["v", "1231893612", "Strange Goodbye – Trailer", "", "Tráiler del cortometraje de Gonzalo Hergueta: una mujer japonesa viaja por España en busca de su padre y sus recuerdos se mezclan con el entorno; producido con Bandiz Studio para la XVII Bienal Española de Arquitectura y Urbanismo.", "Dirección: Gonzalo Hergueta;Producción: Bandiz Studio", "Productora: Bandiz Studio;Tipo: Tráiler de cortometraje;Temática: Arquitectura, Memoria, Viaje;Lugar: España"], ["y", "D35mMLBnAHk", "On | Zendaya in your new favorite action movie", "", "Colección de On co-creada por Zendaya y Law Roach, presentada como una película de acción con coreografía de lucha.", "Dirección: Pantera;DOP: Patrick Golan;Montaje: Fouad Gaber;Coordinador de especialistas: David Forman;Coordinadora de lucha: Hélène Tran;Protagonistas: Zendaya, Law Roach;Producción: Smuggler", "Marca: On;Tipo: Fashion film;Temática: Acción, Lucha, Colaboración"], ["y", "n82JIpnIrZA", "WATCH THE SHOW OF THE LVMH PRIZE WINNER! JULIE KEGELS! By Loïc Prigent", "", "Loïc Prigent sigue a la ganadora del LVMH Prize, Julie Kegels, en el desfile celebrado en la Cité de la Musique.", "Dirección: Loïc Prigent;Filmado con: Albert Oziouls Toulouse, Théo Saussard;Montaje: Axel Robin-Tellier;Sonido: Clément Duché;Producción: Natacha Morice, Rafaële Nix (Secondi para DERALF)", "Marca: Julie Kegels;Tipo: Documental de desfile;Temática: Premio LVMH, Pasarela;Lugar: París"], ["y", "6nXczpqHCks", "Courrèges Spring Summer 2027 Show", "", "Desfile SS27 de Courrèges, de Drew Henry, que según su etiqueta es su debut.", "Dirección creativa: Drew Henry", "Marca: Courrèges;Tipo: Desfile;Temática: Pasarela, Debut, Primavera-verano 2027;Lugar: París"], ["v", "1231233049", "Jil Sander SS24", "", "Campaña primavera-verano 2024 de Jil Sander, de Lucie y Luke Meier, fotografiada por Jack Davison en las islas Canarias con ropa minimalista de tonos neutros.", "Dirección creativa: Lucie Meier, Luke Meier;Fotografía: Jack Davison;Modelos: Julia Nobis, Yuto Ebihara", "Marca: Jil Sander;Tipo: Campaña;Temática: Minimalismo, Primavera-verano 2024;Lugar: Islas Canarias"], ["y", "DB7oO82OeD4", "Dior Summer 2027 Women’s Show", "", "Desfile de verano 2027 de Dior, de Jonathan Anderson.", "Dirección creativa: Jonathan Anderson", "Marca: Dior;Tipo: Desfile;Temática: Pasarela, Verano 2027;Lugar: París"], ["y", "6JD9SNN71Ys", "170: The Anniversary Portraits", "", "Para los 170 años de Burberry, retratos de prendas de abrigo desde perspectivas individuales, inspirados en «The Art of the Trench».", "Etiquetas: Daniel Lee, Emma Dalzell Khan, Jeremy Valender, Tim Walker", "Marca: Burberry;Tipo: Campaña (aniversario);Temática: Retrato, Trench, Viaje;Lugar: Londres, Nueva York, Seúl, Shanghái"], ["y", "JMXp2iNF_LU", "Moschino Spring/Summer 2027 show", "", "Debut de Loris Messina y Simone Rizzo (Sunnei) como directores creativos de Moschino en la Semana de la Moda de Milán: según el texto del post, desfile sin retransmisión en la azotea de un aparcamiento donde las modelos se cruzaban con gente corriente.", "Dirección creativa: Loris Messina, Simone Rizzo", "Marca: Moschino;Tipo: Desfile (debut);Temática: Pasarela, Primavera-verano 2027, Vida cotidiana;Lugar: Milán"], ["y", "1J6NxNk5RFI", "WE ARE WINDOWS", "start=4", "Corto de Zara Home dirigido por Luca Guadagnino, con Jamie Bell, Chase Sui Wonders, Michael Stuhlbarg y Patricia Arquette.", "Dirección: Luca Guadagnino;Guion: Scott Z. Burns;DOP: Edu Grau;Diseño de producción: Stefano Baisi;Decoración de set: Jesse Royal;Estilismo: Robbie Spencer;Maquillaje: Fernanda Perez;Peluquería: Massimo Gattabrusi;Productores: Emanuela Matranga, Luca Guadagnino;Reparto: Jamie Bell, Chase Sui Wonders, Michael Stuhlbarg, Patricia Arquette", "Marca: Zara Home;Tipo: Corto narrativo;Temática: Hogar, Cine"], ["y", "8TDmgVs6HZE", "The Store Show", "", "Presentación en directo desde Milán de la nueva colección de Gucci, de Demna.", "Dirección creativa: Demna", "Marca: Gucci;Tipo: Desfile;Temática: Pasarela, Primavera-verano 2027;Lugar: Milán"], ["y", "Q-fZMwInn6s", "Choreographer Andrea Peña, a 2026 CHANEL Next Prize winner", "", "Retrato de la coreógrafa Andrea Peña, premio CHANEL Next 2026, formada en American Ballet Theatre y en diseño industrial, filmado en São Paulo y París.", "Protagonista: Andrea Peña", "Marca: Chanel;Tipo: Retrato documental;Temática: Danza, Premio, Narración;Lugar: São Paulo, París"], ["y", "C-qiH-j9YLk", "Milan｜S/S 2027 Collection", "start=12", "Desfile SS27 de Fendi en la Semana de la Moda de Milán.", "Créditos no indicados en el post", "Marca: Fendi;Tipo: Desfile;Temática: Pasarela, Primavera-verano 2027;Lugar: Milán"], ["y", "OqDxbRYUqFI", "Bottega Veneta Summer 2027 Show", "start=2343", "Desfile de verano 2027 de Bottega Veneta en la Semana de la Moda de Milán.", "Créditos no indicados en el post", "Marca: Bottega Veneta;Tipo: Desfile;Temática: Pasarela, Verano 2027;Lugar: Milán"], ["y", "x1auoUD-YEM", "Maison Margiela | A Tabi Film", "", "Película de Yuri Ancarani sobre la artesanía del Tabi de Margiela, desde el concepto hasta el montaje final: once artesanos, cada zapato rematado con una sola puntada blanca.", "Dirección: Yuri Ancarani;Voz: Ermanna Montanari;Producción: ILCAPO", "Marca: Maison Margiela;Tipo: Documental breve;Temática: Artesanía, Zapato, Archivo"], ["v", "1227647237", "STONE ISLAND | PASSPORT", "", "Pieza de Stone Island; el post la presenta con un texto sobre el director Glenn Kitson y su mirada a la cultura británica.", "Dirección: Glenn Kitson", "Marca: Stone Island;Tipo: Documental;Temática: Cultura británica"], ["y", "BQOhwflmyrI", "Sin título (Gucci short)", "", "Short de YouTube sin título ni texto, etiquetado con Gucci.", "Créditos no indicados en el post", "Marca: Gucci;Tipo: Short"], ["y", "pgQVBfxZZ7g", "Hello! | Julie Kegels Fall-Winter 26", "", "Película de diez minutos de Belle Smith para la colección OI26 de Julie Kegels: dos mujeres jóvenes buscan amistad y existencia en un París vacío y caluroso, entre sombras sin dueño.", "Dirección: Belle Smith;DOP: Dylan Buzolich;Estilismo: Natasha Colvin;Modelos: Mauve Dupuy, Sima Lukatina;Maquillaje: Florence Teerlinck;Peluquería: Laurence Walker", "Marca: Julie Kegels;Tipo: Fashion film;Temática: Aislamiento, Identidad, Surrealismo;Lugar: París"], ["y", "UkCy7r0MlQo", "The Artist Transforming Sound into Space | Meet Composer Pan Daijing, 2026 CHANEL Next Prize Winner", "", "Retrato de la artista y compositora Pan Daijing, premio CHANEL Next 2026, que convierte sonido, cine y arquitectura en experiencias sensoriales; filmado en Berlín.", "Protagonista: Pan Daijing", "Marca: Chanel;Tipo: Retrato documental;Temática: Sonido, Instalación, Arte, Premio;Lugar: Berlín"], ["v", "1064404181", "Robbie Corral – Y-3 SS25 RUNNING HERO", "", "Pieza de running de Y-3 para adidas, de Robbie Corral.", "Etiqueta: Robbie Corral", "Marca: Y-3, adidas;Tipo: Película de producto;Temática: Running, Ropa deportiva"], ["y", "Go-M1UcRSew", "Meet Emeka Ogboh, 2026 CHANEL Next Prize winner", "", "Retrato del artista nigeriano Emeka Ogboh, que trabaja con sonido, gusto, olfato y tacto para traducir lugares en experiencias sensoriales; recorre cómo el ruido guarda memoria entre Lagos y Berlín.", "Protagonista: Emeka Ogboh", "Marca: Chanel;Tipo: Retrato documental;Temática: Sonido, Memoria, Ciudad, Premio;Lugar: Lagos, Berlín"], ["y", "MhMSkxnG0Ik", "JIL SANDER SPRING/SUMMER 2027 BY SIMONE BELLOTTI", "", "Desfile SS27 de Jil Sander, de Simone Bellotti: «el movimiento llega en olas: ceder y retirarse».", "Dirección creativa: Simone Bellotti", "Marca: Jil Sander;Tipo: Desfile;Temática: Pasarela, Primavera-verano 2027, Movimiento;Lugar: Milán"], ["y", "BfbPly0sdys", "Prada Spring/Summer 2027 Womenswear Show", "", "Desfile SS27 de mujer de Prada, de Miuccia Prada y Raf Simons, retransmitido desde el Deposito de la Fondazione Prada en Milán.", "Dirección creativa: Miuccia Prada, Raf Simons", "Marca: Prada;Tipo: Desfile;Temática: Pasarela, Primavera-verano 2027;Lugar: Milán (Fondazione Prada)"], ["y", "VCKqmep3oL4", "This Artist Builds Our Future Universe | Meet Ayoung Kim, Techno-Pioneer & CHANEL Next Prize Winner", "", "Retrato de Ayoung Kim, que usa motores de juego e IA para construir mundos de dobles y agentes dobles; filmado en su estudio de Seúl.", "Protagonista: Ayoung Kim", "Marca: Chanel;Tipo: Retrato documental;Temática: Tecnología, IA, Arte, Premio;Lugar: Seúl"], ["v", "1147424602", "coperni COORECTEDTOPOST", "", "Pieza de Coperni; las etiquetas hablan de desfile y citan a Johan Le Roux.", "Etiqueta: Johan Le Roux", "Marca: Coperni;Tipo: Desfile;Temática: Pasarela"], ["y", "s4lnt19aWJA", "ALAINPAUL SS27 [ THE SCENE ]", "start=559", "Desfile SS27 de Alainpaul con coreografía de Eric Von Christison y música de Sen Studio con Shygirl, en clave de rave.", "Dirección creativa: Alainpaul;Coreografía: Eric Von Christison;Música: Sen Studio, Shygirl;Maquillaje: Inge Grognard (Byredo);Peluquería: Louis Ghewy (Shiseido);Casting: AND Casting;Manicura: @couldbefanny;Concepto, escenografía y producción: Profirst;Película: Baleine sous cachalot;Dirección: Anthony Gouj", "Marca: Alainpaul;Tipo: Desfile;Temática: Pasarela, Rave, Primavera-verano 2027;Lugar: París"], ["v", "1155496882", "2401_pragmajlrgrade422LT", "", "Pieza sin descripción; las etiquetas citan a Johan Le Roux y a la danza.", "Etiqueta: Johan Le Roux", "Tipo: Pieza de danza;Temática: Danza"], ["v", "1223368833", "POLENE_BERI-LIF", "", "Pieza de Polène; la etiqueta cita a Johan Le Roux.", "Etiqueta: Johan Le Roux", "Marca: Polène;Tipo: Pieza de marca"], ["v", "1226724851", "DANNA | YSL Beauty | Reflections", "", "Película de YSL Beauty protagonizada y dirigida creativamente por la cantante y actriz mexicana Danna, inspirada en la fragancia LIBRE y en el lanzamiento de LIBRE Berry Crush; rodada en Ciudad de México.", "Dirección creativa: Danna;DOP: Farhad Ghaderi;Producción: mnstrm.tv, Landia;Guion: Ximena Prieto;Diseño de producción: Luciano Lasca;EP: Irlanda Tapia, Thomas Amoedo;Montaje: Armen Harootun;Color: Sam Gilling;Sonido y mezcla: BDS;Etiqueta de dirección: Alexis Gómez", "Marca: YSL Beauty;Tipo: Película de fragancia;Temática: Libertad, Reflejos, Música;Lugar: Ciudad de México"], ["v", "1228852968", "Louis Vuitton – Flight Mode", "", "Colección Flight Mode de Louis Vuitton construida en torno a Instrumentals, Volume 1 de Arthur Russell y rodada en Montreux (Suiza).", "Dirección creativa: Lane & Associates;DOP: Hampus Nordenson;Producción: Iconoclast;Montaje: Aitor Bigas;Postproducción: Poster;Color: Julien Alary;Supervisión musical: Lena Daniel;Servicio: Kitten;Etiqueta de dirección: Alexis Gómez", "Marca: Louis Vuitton;Tipo: Campaña;Temática: Viaje, Música;Lugar: Montreux, Suiza"], ["v", "1058142484", "Henry Jacques x Heron Preston – In All Intimacy", "", "Pieza de fragancias de Heron Preston con Henry Jacques; la etiqueta cita a Felix Aaron.", "Etiqueta: Felix Aaron", "Marca: Heron Preston;Tipo: Película de fragancia;Temática: Fragancia, Intimidad"], ["v", "1020708973", "H&M – Heron Preston H2", "", "Campaña de H&M con Heron Preston; las etiquetas citan a Peter Hou, Aidan Zamiri, Reese Layton y Emi Steward.", "Etiquetas: Peter Hou, Aidan Zamiri, Reese Layton, Emi Steward", "Marca: H&M, Heron Preston;Tipo: Campaña"], ["y", "h2E8cdTCIS0", "H&M&YOU&I | The Full London Fashion Show Event Recap", "start=193", "Desfile completo H&M&YOU&I en Londres con lo mejor de la colección OI 2026 (H&M Studio, Autumn Collection y Atelier), con música en directo de Labrinth.", "Dirección creativa: Nick Knight, Calum Knight;Diseño interactivo: SHOWstudio;Música: Labrinth;Ilustraciones: Cliff Warner;Estilismo: Jacob Kjeldgaard;Diseño de producción del evento: Andrew Tomlinson;Artista visual: Karyn Nakamura;Dirección de performance: MJ Harper;Casting: DM Casting;Maquillaje: Lucy Bridge;Peluquería: Damien Boissinot;Manicura: Adam Slee", "Marca: H&M;Tipo: Desfile (recopilación);Temática: Pasarela, Otoño-invierno 2026, Música en directo;Lugar: Londres"], ["y", "2gxi58b5HkU", "Meet the 2026 CHANEL Next Prize Winners | Artists, Painters, World-Builders", "", "Serie sobre los diez ganadores del CHANEL Next Prize 2026, de diez países y disciplinas: cine, música, escultura, pintura y danza.", "Ganadores: Álvaro Urbano, Ambrose Akinmusire, Andrea Peña, Ayoung Kim, Bárbara Sánchez-Kane, Emeka Ogboh, Marco da Silva Ferreira, Pan Daijing, Payal Kapadia, Pol Taburet", "Marca: Chanel;Tipo: Serie documental;Temática: Arte, Premio, Creadores"], ["y", "yK7edA-y7Rk", "Red Means Go | Why couldn’t you get a proper job? | HUGO", "", "Pieza de HUGO de la serie Red Means Go.", "Créditos no indicados en el post", "Marca: HUGO;Tipo: Campaña"], ["v", "1227679508", "Armani: “Symbols”", "", "Película de Armani dirigida por rubberband., rodada en 35 mm de 4 perforaciones (5213) y Súper 16 mm (Ektachrome); la etiqueta cita a Pat Golan.", "Dirección: rubberband;Color: Aubrey Woodiwiss", "Marca: Armani;Tipo: Campaña;Temática: Símbolos;Formato: 35 mm 4-perf (5213), Súper 16 mm (Ektachrome)"], ["y", "5T1Bt5DPzPY", "On | Lane 1. Run in rhythm.", "", "Nueva colección limitada de rendimiento de On inspirada en la dedicación para mantenerse en el carril más rápido, creada junto a doce comunidades de running.", "Créditos no indicados en el post", "Marca: On;Tipo: Campaña;Temática: Running, Ropa deportiva, Zapatillas"], ["y", "lYiE4DkKAbQ", "The Long Way. A short film by Gap × A.P.C.", "", "Corto de Gap × A.P.C. sobre dos desconocidos que eligen el camino largo y lo que encuentran; protagonizado por Ian y Paloma Bonnie Le Friant, rodado en París.", "Dirección: Karl Cannone;DOP: Gabriel Connelly;Montaje: Jordaan James;Color: Ethos Studio;Producción: YadaYada;Productor: @boris_vassallo;Diseño de set: Hugo Cudot;Maquillaje: Hélène Vasnier;Peluquería: Pawel Solis;Música: Parallel People Collective;VP creativo Gap: Calvin George;Fotógrafo BTS: Colby Rivière;Protagonistas: Ian, Paloma Bonnie Le Friant", "Marca: Gap, A.P.C.;Tipo: Corto narrativo;Temática: Encuentro, Ciudad;Lugar: París"], ["y", "wJv0s6RrtqQ", "THE EVERYDAY", "", "Editorial de otoño de Zara Home sobre el placer de volver a casa y a los rituales del hogar en septiembre.", "Créditos no indicados en el post", "Marca: Zara Home;Tipo: Editorial;Temática: Hogar, Rituales"], ["y", "xCJHA-6dSIg", "Inside Lexus x AMBUSH: The Future Classic Club", "", "Iniciativa cultural de Lexus y AMBUSH por los 25 años del Lexus IS: un film dirigido por Xavier Tera y una cápsula creada bajo la dirección de Yoon Ahn, con Sara Choi, Reo Sano y Reiji Okamoto.", "Dirección: Xavier Tera;Dirección creativa: Yoon Ahn;Reparto: Sara Choi, Reo Sano, Reiji Okamoto", "Marca: Lexus, Ambush;Tipo: Colaboración;Temática: Automoción, Moda, Música, Cultura;Lugar: Tokio"], ["y", "y5okxyfJkKE", "STUDIO MARY LENNOX", "", "Pieza de Zara Home con Studio Mary Lennox, centrada en las flores.", "Etiqueta: Studio Mary Lennox", "Marca: Zara Home;Tipo: Pieza de marca;Temática: Flores"], ["v", "1223712010", "BOTTEGA VENETA · INTRECCIATO COLLECTION", "", "Pieza sobre la colección Intrecciato de Bottega Veneta centrada en las texturas; la etiqueta cita a Rafa de Pazos.", "Etiqueta: Rafa de Pazos", "Marca: Bottega Veneta;Tipo: Película de colección;Temática: Texturas, Intrecciato"], ["v", "1224180307", "HYKE 2027ss", "", "Detalles y backstage de la colección primavera-verano 2027 de HYKE.", "Créditos no indicados en el post", "Marca: HYKE;Tipo: Backstage;Temática: Pasarela, Primavera-verano 2027"], ["v", "1225858717", "ZARA PRE-OWNED", "", "Pieza de Zara Pre-Owned; la etiqueta cita a Guillem Cruells.", "Etiqueta: Guillem Cruells", "Marca: Zara;Tipo: Campaña;Temática: Segunda mano"], ["y", "kaGJgGhY5pw", "RIMOWA | ‘Tides’ by Jeroen Dankers", "", "«Tides», del cineasta neerlandés Jeroen Dankers, disuelve el espacio entre realidad y fantasía para revelar un mundo onírico justo al lado de lo familiar.", "Dirección: Jeroen Dankers;Producción: Caviar, Artillerie;Fotografía: Douwe Hennink;Casting: Lisa Dymph;Color: Daniel de Vue", "Marca: Rimowa;Tipo: Corto de marca;Temática: Fantasía, Realidad, Sueño"], ["y", "dFLxkEjHtfo", "Discover Giorgio Armani 2026 Fall/Winter Collection", "", "Campaña de la primera colección de Giorgio Armani diseñada por Silvana Armani y Leo Dell’Orco, con Liam Kelly, Akbar Shamji y Christy Turlington.", "Fotografía y dirección: Oliver Hadlee Pearch;Dirección creativa: Silvana Armani, Leo Dell’Orco;Reparto: Liam Kelly, Akbar Shamji, Christy Turlington", "Marca: Giorgio Armani;Tipo: Campaña;Temática: Atemporalidad, Otoño-invierno 2026"], ["y", "c7_wqzibh8U", "Avec Kim by Claire Denis – Miu Miu Women’s Tales #32", "", "Trigésimo segundo encargo de Miu Miu Women’s Tales: una joven mecánica recorre las calles de París en un coche de los ochenta hasta reencontrarse con una viajera; con música de Kim Gordon.", "Dirección: Claire Denis;Reparto: Suzanne Lindon, Kim Gordon", "Marca: Miu Miu;Tipo: Corto narrativo (Women’s Tales);Temática: Encuentro, Coche, Ciudad;Lugar: París"], ["y", "jwJQXSlW_Kg", "Bottega Veneta Winter 2026", "", "Campaña de invierno 2026 de Bottega Veneta, fotografiada por Juergen Teller por Milán entre interiores, arquitectura orgánica y esculturas al aire libre (Villa Terenzio Belloli, Fondazione Pagani).", "Dirección y fotografía: Juergen Teller;Dirección creativa: Louise Trotter;Música: Mary Komasa, Antoni Komasa-Lazarkiewicz", "Marca: Bottega Veneta;Tipo: Campaña;Temática: Arquitectura, Brutalismo, Sensualidad;Lugar: Milán"], ["y", "yBMjYdXD5uM", "Josh O’Connor reads Morte d’Arthur by Alfred Lord Tennyson | AnOther", "", "Josh O’Connor y Kiki Willems en una lectura de «Morte d’Arthur» de Tennyson dirigida por Alasdair McLellan para AnOther Magazine OI 2026, con proceso de película.", "Dirección: Alasdair McLellan;Estilismo: Alister Mackie;Peluquería: Tom Wright;Producción: Partner Films;EP: Araminta Markes;Productora: Katie Wright;Montaje: Alexi Pissourios;Postproducción: INK;Color: Jamie Noble;Laboratorio: Cinelab;Protagonistas: Josh O’Connor, Kiki Willems", "Marca: AnOther Magazine;Tipo: Lectura filmada;Temática: Poesía, Literatura;Formato: 35 mm"], ["y", "QjAj0BLMHQc", "Maison Margiela | ANONYMITY", "", "Tráiler de un thriller psicológico ficticio protagonizado por Rebecca Hall: una actriz se enfrenta a su doble enmascarado y a su propia identidad.", "Dirección y fotografía: Thibaut Grevet;Estilismo: Ursina Gysi;Peluquería: Tom Wright;Maquillaje: Lucia Pica;Música: Senjan Jansen;Protagonista: Rebecca Hall", "Marca: Maison Margiela;Tipo: Fashion film (tráiler);Temática: Identidad, Doble, Thriller"], ["y", "HHK8VDzPfMs", "HOW TO LAUNCH A BRAND EP.3 : who are the winners?", "", "Último episodio de la segunda temporada de Watch for the Prize: la final del LVMH Prize 2026, con los diseñadores finalistas preparando los últimos detalles ante el jurado.", "Dirección: Loïc Prigent;Filmado con: Clément Brelet;Sonido: Clément Duché;Montaje: Suzy Chatellier, Julie Lacor;Producción: Natacha Morice, Rafaële Nix (Secondi para DERALF)", "Marca: LVMH Prize;Tipo: Serie documental (episodio 3);Temática: Diseñadores emergentes, Premio;Lugar: París"], ["y", "LutBUtHdxKM", "A24 meets Dior", "", "Colaboración creativa entre A24 y Dior que une cine, moda y teatro: Sabrina Carpenter, Camille Cottin, Josh O’Connor, Drew Starkey y Sophie Wilde interpretan a Jonathan Anderson.", "Dirección: Aidan Zamiri;Dirección creativa: Jonathan Anderson;Reparto: Sabrina Carpenter, Camille Cottin, Josh O’Connor, Drew Starkey, Sophie Wilde, Jonathan Anderson", "Marca: Dior, A24;Tipo: Fashion film;Temática: Cine, Teatro, Moda"], ["y", "0VBRg-e1dTo", "Ambition in Motion | The HUGO Fall/Winter 2026 campaign", "", "Campaña FW26 de HUGO «Red Means Go»: creadores y agitadores moviéndose por la ciudad, con un vestuario «de los noventa en espíritu y de ahora en actitud».", "Etiqueta: Tereza Mundilova", "Marca: HUGO;Tipo: Campaña;Temática: Ciudad, Juventud, Otoño-invierno 2026"], ["v", "1123814789", "Sergio Tacchini SS26", "", "Pieza de la colección primavera-verano 2026 de Sergio Tacchini.", "Créditos no indicados en el post", "Marca: Sergio Tacchini;Tipo: Campaña;Temática: Deporte, Primavera-verano 2026"], ["y", "YmylhftnVUY", "Hermès women’s spring-summer 2027 collection", "", "Looks de la colección de mujer SS27 de Hermès: un dobladillo se levanta, una manga se llena y cada prenda se pone suavemente en movimiento, con una sensación de ingravidez.", "Créditos no indicados en el post", "Marca: Hermès;Tipo: Película de colección;Temática: Ligereza, Movimiento, Primavera-verano 2027;Lugar: París"], ["v", "1204260007", "Goldwin 0 – ‘0123450’", "", "Película de OK-RM para Goldwin 0 sobre un viaje colaborativo que busca nuevas formas de trabajo compartido y un ciclo generativo de aprendizaje.", "Dirección: Oliver Knight, Rory McGrath (OK-RM);Música: Yuiko Kawauchi;Montaje: Tom Chick;Fotografía: Gaku Kamimura, Yudai Maruyama;Coreografía: Chikako Takemoto;Vestuario: Nur Abbas;Estilismo: Debbie Pan;Productor: Saka Matsushita;Color: Alexey Moskvin;Producción de sonido: Masaya Tamura;Reparto: Niki Kudo, Reign, Tenmetsu", "Marca: Goldwin 0;Tipo: Película de residencia;Temática: Colaboración, Danza, Música;Lugar: Tokio"], ["v", "1203823696", "Goldwin 0 – Retrospective", "", "Un solo plano que resume las «Enquiries» de Goldwin 0, que reunieron a más de 150 colaboradores entre poetas, arquitectos, coreógrafos, músicos y artistas.", "Dirección: Oliver Knight, Rory McGrath (OK-RM)", "Marca: Goldwin 0;Tipo: Retrospectiva;Temática: Instalación, Colaboración;Lugar: Londres, Tokio"], ["y", "e2uoZOaH1cw", "And We Shall Dance Again: Gucci Primavera", "", "Corto de la campaña Primavera de Gucci: Kate Moss hace lip-sync de «Wicked Game» de Chris Isaak mientras una sala de desconocidos se despierta, forma parejas y se enamora en la pista de baile.", "Dirección: Johan Renck;Protagonista: Kate Moss;Música: Chris Isaak", "Marca: Gucci;Tipo: Corto de campaña;Temática: Amor, Baile, Música"], ["v", "1170424879", "CELINE SS2026", "", "Campaña audiovisual de Celine para el verano 2026, etiquetada con Massimiliano Bomba.", "Etiqueta: Massimiliano Bomba", "Marca: Celine;Tipo: Campaña;Temática: Minimalismo, Primavera-verano 2026"], ["v", "1147930347", "CELINE I Infinite Possibilities I Campaign", "", "Campaña «Infinite Possibilities» de Celine, centrada en la fluidez de un pañuelo de seda; dirigida por Massimiliano Bomba bajo la dirección creativa de Michael Rider.", "Dirección: Massimiliano Bomba;Dirección creativa: Michael Rider", "Marca: Celine;Tipo: Campaña;Temática: Seda, Movimiento, Posibilidades"], ["v", "1210248970", "CELINE I Infinite Possibilities Silk", "", "Campaña digital «Infinite Possibilities Silk» de Celine (OI 2026): el pañuelo de seda se transforma en top, cinturón o adorno de bolso.", "Dirección: Massimiliano Bomba;Dirección creativa: Michael Rider;Montaje: Filippo Patelli;Estilismo: Brian Molloy;Peluquería: Duffy;Maquillaje: Christelle Cocquet", "Marca: Celine;Tipo: Campaña;Temática: Seda, Versatilidad, Otoño-invierno 2026"], ["v", "1117737384", "Zara Home – Le Doyenné (tomatoes)", "", "Piezas de Zara Home en el restaurante Le Doyenné, con el realizador Emir Eralp; texturas de la cocina y la granja.", "Etiqueta: Emir Eralp;Agradecimientos: Concept Paris, Cosima Ungaro, Austin Feilders, Pintagrillos, Julian Harold", "Marca: Zara Home, Le Doyenné;Tipo: Pieza de marca;Temática: Gastronomía, Texturas;Lugar: Saint-Vrain, Francia"], ["v", "1165944596", "D LA REPUBBLICA", "", "Pieza para D La Repubblica con estética de bodegón.", "Dirección: Sara Szy, Eduard Sánchez Ribot;DOP: Sara Szy;Estilismo: Roberto Ciminaghi;Diseño de set: Olivia Aine", "Marca: D La Repubblica;Tipo: Editorial;Temática: Bodegón"], ["v", "671426539", "Talia Chetrit", "", "Pieza sobre la fotógrafa Talia Chetrit, cuya obra analógica convierte la intimidad familiar y el cuerpo en un campo de tensión estética.", "Protagonista: Talia Chetrit", "Tipo: Documental breve;Temática: Fotografía, Arte, Exposición"], ["v", "943610605", "ARKET | In Bloom", "", "Película en cámara lenta para Arket rodada en Kodak, centrada en la intimidad; con voz en off y la etiqueta de Emir Eralp.", "Etiqueta: Emir Eralp;Agradecimientos: @melinnea, @teknao, @linrin, Kasper Andersen (pelo), @iggifly, @aronheinemann, Hello Production Co, @tintpost, Lund Lund Agency", "Marca: Arket;Tipo: Campaña;Temática: Cámara lenta, Intimidad;Formato: Kodak"], ["v", "963164372", "BURBERRY | Knight Blue 024", "", "Pieza «Knight Blue» de Burberry con la naturaleza como motivo; la etiqueta cita a Massimiliano Bomba.", "Etiqueta: Massimiliano Bomba", "Marca: Burberry;Tipo: Campaña;Temática: Naturaleza"], ["y", "8k4epXgnbHo", "LOEWE Fall Winter 2026 campaign", "", "Campaña FW26 de Loewe, de Jack McCollough y Lazaro Hernandez, fotografiada por Talia Chetrit en Pointe Helbronner (Mont Blanc), con vídeo de Arthur Williams.", "Dirección creativa: Jack McCollough, Lazaro Hernandez;Fotografía: Talia Chetrit;Vídeo: Arthur Williams", "Marca: Loewe;Tipo: Campaña;Temática: Nieve, Montaña, Textura, Otoño-invierno 2026;Lugar: Mont Blanc"], ["y", "Ic6EXETUrCU", "Nick Knight Is Building His Own AI | The BoF Podcast", "", "Entrevista de Imran Amed con Nick Knight, que construye sus propios datasets de IA fotografiando una y otra vez a una modelo, y el medio nuevo entre fotografía y cine que ve surgir.", "Entrevistado: Nick Knight;Entrevistador: Imran Amed", "Marca: The Business of Fashion;Tipo: Entrevista / podcast;Temática: IA, Imagen de moda, Futuro"], ["v", "1219586291", "CELINE PRINTEMPS ÉTÉ 2027 (1)", "", "Desfile de hombre SS27 de Celine, con las manos como motivo, dirigido por Pablo Tapia Pla.", "Dirección: Pablo Tapia Pla;Dirección artística: Michael Rider;Montaje: Thomas Goldser;DOP: Pol García Sala;Diseño de set: Victor Leverrier;Dirección de arte: May Be, Kevin Tekinel, Charles Levai;Dirección de imagen: Samuel Ellis;Dirección creativa de vídeo: Léa Mesplede", "Marca: Celine;Tipo: Desfile;Temática: Pasarela, Primavera-verano 2027, Manos;Lugar: París"], ["v", "1219586277", "CELINE PRINTEMPS ÉTÉ 2027 (2)", "", "Segunda pieza del desfile de hombre SS27 de Celine, en blanco y negro y de carácter retrato.", "Dirección: Pablo Tapia Pla;Dirección artística: Michael Rider;DOP: Pol García Sala;Montaje: Thomas Goldser;Color: Martí Somoza;Diseño de set: Victor Leverrier;Peluquería: Duffy;Maquillaje: Lucia Pieroni;Dirección de imagen: Samuel Ellis", "Marca: Celine;Tipo: Desfile;Temática: Pasarela, Retrato, Blanco y negro;Lugar: París"], ["v", "1217245486", "FOR A LIFETIME OF LIVES_PANTERA_RIMOWA", "", "Primer episodio de tres de la campaña de Rimowa: un padre despide a su hijo y le entrega una maleta con su trompeta, el inicio de una vida de jazz.", "Dirección y guion: Pantera;Música: Theo Croker;Productora: Smuggler;Montaje: Nik Kohler;Diseño de sonido: IXYXI;Diseño de producción: Carol Ozzi;Fotografía: Arseni Khachaturan;Color: Julien Alary;Estilismo: Verity May Lane;Casting: Kharmel Cochrane;Agencia: GUT Amsterdam;Protagonista: Grifton Forbes", "Marca: Rimowa;Tipo: Corto de campaña (episodio 1);Temática: Viaje, Jazz, Paso del tiempo"], ["v", "895785607", "Bring No Clothes – Charleston House & Dior", "", "Proyecto sobre el legado del grupo de Bloomsbury en Charleston House, con Dior como patrocinador de la exposición «Bring No Clothes» comisariada por Charlie Porter; pieza audiovisual de Lydia Garnett.", "Dirección: Lydia Garnett;Comisariado: Charlie Porter", "Marca: Dior, Charleston House;Tipo: Documental breve;Temática: Bloomsbury, Moda, Libertad, Exposición;Lugar: Sussex, Inglaterra"], ["v", "1070848895", "Braun x Virgil Abloh™ ‘The Wandanlage, reimagined’", "", "Película de Braun con Virgil Abloh sobre la reinterpretación de la Wandanlage.", "Dirección: Adam Jason Cohen;DOP: Brandon Hoeg;Foco: Alan Dembek;Productora: Media Monks;Cliente: Braun", "Marca: Braun, Virgil Abloh;Tipo: Película de producto;Temática: Diseño, Audio"], ["y", "cgz7btj5eGU", "THE CALM AND THE CHAOS", "", "Corto de Stone Island rodado por Isaac Lamb sobre el diálogo entre las escenas hardcore de Estados Unidos y Reino Unido, tras seis meses de gira con cuatro bandas por Norteamérica y Europa.", "Fotografía y dirección creativa: Isaac Lamb;Estilismo: Arco Maher;Texto: Graham Sayle;Productora: India M.;Dirección de arte: @ubereatzz", "Marca: Stone Island;Tipo: Corto documental;Temática: Hardcore, Punk, Música, Identidad;Lugar: Norteamérica, Europa"], ["y", "x4WWTfDwS1U", "Science and fashion collide in our new CERN project", "start=69", "Film de moda de SHOWstudio con Iris van Herpen y Nick Knight dentro del CERN, entre el Gran Colisionador de Hadrones y la Fábrica de Antimateria, con las modelos Molly Bair y Park Soo Joo.", "Dirección: Nick Knight;Diseño: Iris van Herpen;Producción: SHOWstudio;Modelos: Molly Bair, Park Soo Joo", "Marca: SHOWstudio, Iris van Herpen;Tipo: Fashion film;Temática: Ciencia, Física, Moda;Lugar: CERN (Francia-Suiza)"], ["y", "ovyobyRXYew", "fred again.. | 9 months & 50 hours", "", "Pieza de fred again.. sobre proceso y música.", "Créditos no indicados en el post", "Tipo: Película musical;Temática: Música, Proceso"], ["y", "gfQZphhEbhQ", "RIMOWA | Introducing the RIMOWA Dartboard Case", "", "El actor Walton Goggins protagoniza una historia de voluntad y fe para presentar la Dartboard Case de edición limitada de Rimowa.", "Dirección: Grégoire Dyer;DOP: Nadia Szy;Estilismo: Anita Szymczak;Peluquería: Rebecca Chang;Diseño de producción: Jeanne Ader;Producción: Lola Production;Protagonista: Walton Goggins", "Marca: Rimowa;Tipo: Corto de producto;Temática: Dardos, Fe, Edición limitada"], ["y", "GGu-7uXRAEQ", "LOVE LETTERS, LOVE MATTERS WITH SONG JIA", "", "Proyecto de Saint Laurent, de Anthony Vaccarello, para celebrar el Qixi: un film sobre la intimidad de las cartas de amor a través de los escritos de Li Yinhe, con Song Jia.", "Dirección: Jeremy Z. Qin;Dirección creativa: Anthony Vaccarello;Creatividad: Fred & Farid Shanghai;DOP: Beier Liu;Diseño de producción: Jialiang Zhong;Montaje: Jerry Sun;Color: Ken Lei;Productora: DOT COMME LTD;Protagonista: Song Jia", "Marca: Saint Laurent;Tipo: Fashion film;Temática: Cartas de amor, Qixi;Lugar: Shanghái"], ["y", "APKToc2iKds", "Miu Miu Fall/Winter 2026 Campaign", "", "Campaña FW26 de Miu Miu en un paisaje nocturno suspendido con tonos azules, con Hailey Bieber y Xiao Wen Ju.", "Dirección creativa: Miuccia Prada;Fotografía: Zoe Ghertner;Dirección: Renell Medrano;Dirección de arte: Christopher Simmonds;Estilismo: Lotta Volkova;Reparto: Hailey Bieber, Xiao Wen Ju", "Marca: Miu Miu;Tipo: Campaña;Temática: Noche, Azul, Otoño-invierno 2026"], ["v", "1210637515", "GIVENCHY FW26", "", "Película de la colección otoño-invierno 2026 de Givenchy; la etiqueta cita a Julien Pujo.", "Etiqueta: Julien Pujo", "Marca: Givenchy;Tipo: Película de colección;Temática: Otoño-invierno 2026"], ["v", "737561203", "Vanmoof x Dazed", "", "Pieza de Vanmoof con Dazed sobre bicicletas urbanas; la etiqueta cita a Francis Plummer.", "Etiqueta: Francis Plummer", "Marca: Vanmoof, Dazed;Tipo: Pieza de marca;Temática: Bicicleta, Ciudad"], ["v", "1210725055", "Stüssy – Wish You Were Here", "", "Una postal de Francis, Robbie y Simba para Stüssy desde México.", "Créditos no indicados en el post", "Marca: Stüssy;Tipo: Pieza de marca;Temática: Viaje, Postal;Lugar: México"], ["y", "Aci4qpV_EFY", "Nick Knight – Freedom of Love (Brad Pitt)", "", "Corto de Nick Knight para SHOWstudio con Brad Pitt, filmado en California en 2004 y guiado por el poema «Freedom of Love» de André Breton.", "Dirección: Nick Knight;Producción: SHOWstudio;Protagonista: Brad Pitt;Texto: André Breton", "Marca: SHOWstudio;Tipo: Fashion film;Temática: Poesía, Retrato;Lugar: California"], ["v", "726720803", "Bottega Veneta Palazzo San Fedele", "", "Campaña Winter 22 de Bottega Veneta.", "Dirección: Luca Werner;DOP: Gillian Garcia;Casting: Anita Elizabeth Bitton;Estilismo: Alastair McKimm;Peluquería: Duffy;Maquillaje: Diane Kendal", "Marca: Bottega Veneta;Tipo: Campaña;Temática: Otoño-invierno 2022"], ["y", "9yFtB4Js3oo", "At the Speed of Life | Veloretti Electric Two", "", "Campaña Electric de Veloretti sobre el ritmo de la vida urbana, con una madre y una hija que hacen tiempo la una para la otra y el piano como hilo compartido.", "Dirección: Luca Werner;Etiqueta: Pol Sala", "Marca: Veloretti;Tipo: Campaña;Temática: Bicicleta eléctrica, Ciudad, Familia"], ["y", "H8nN1WHwOkk", "Olga Basha – New Jeans", "", "Corto narrativo con humor ambientado en Nueva York, protagonizado por Greer Cohen, Fiona Agger, Conor Fay, Adinah Dancyger y Kristoffer Borgli.", "Dirección: Matias & Mathias;DOP: Doug Durant;Montaje: Carla Luffe;Productor: Jake Agger;Dirección creativa: Lucy Weisner;Diseño de sonido: Jack Sobo;Compositor: Zachary Seman;Color: Julien Alary (TMLS);Escaneado: Metropolis Post", "Marca: Olga Basha;Tipo: Corto narrativo;Temática: Humor, Denim;Lugar: Nueva York"], ["y", "8ZieZr8YqLM", "Olga Basha – Jeans+", "", "«Una etiqueta de denim, un misterio»: corto con humor protagonizado por Sophie Becker, Rajat Suresh y Nile Greenberg.", "Dirección: Matias & Mathias;DOP: Doug Durant;Productora: Lucy Weisner;Compositor: Zachary Seman;Color: Julien Alary (TMLS);Diseño de sonido: Jonathan Franco;Diseño gráfico: Matthew Spevack", "Marca: Olga Basha;Tipo: Corto narrativo;Temática: Humor, Denim, Misterio"], ["v", "1172576851", "Lemaire FW26 Show", "", "Desfile otoño-invierno 2026 de Lemaire; la etiqueta cita a Doug Durant.", "Etiqueta: Doug Durant", "Marca: Lemaire;Tipo: Desfile;Temática: Pasarela, Otoño-invierno 2026"], ["v", "1176363160", "Polène | Store Hamburg | David León", "", "Apertura de la tienda de Polène en Hamburgo (Neuer Wall 71), diseñada por Snøhetta, con una zona «Artisanship at Work» y vídeo del cineasta David León Fiene.", "Dirección: David León Fiene;Arquitectura: Snøhetta", "Marca: Polène;Tipo: Película de tienda;Temática: Arquitectura, Artesanía;Lugar: Hamburgo"], ["y", "W0r_busQb5g", "Schiaparelli Haute Couture", "start=434", "Desfile de alta costura de Schiaparelli, de Daniel Roseberry, con película de desfile de Clara Cullen.", "Dirección: Clara Cullen;Dirección creativa: Daniel Roseberry", "Marca: Schiaparelli;Tipo: Desfile;Temática: Alta costura, Surrealismo;Lugar: París"], ["v", "1162167577", "&Tradition – Kape", "", "Documental breve sobre la silla Kape de &Tradition; la etiqueta cita a Ludvig Frøkjær Thomsen y Tuomas Nurmi.", "Etiquetas: Ludvig Frøkjær Thomsen, Tuomas Nurmi", "Marca: &Tradition;Tipo: Documental breve;Temática: Mobiliario, Silla, Entrevista"], ["v", "1200987211", "Louis Vuitton – F1 City Guide", "", "Guía de ciudad de Louis Vuitton para la Fórmula 1, con una sola persona como director, DOP, montador y sonidista.", "Dirección: Guillaume Lebel;DOP: Guillaume Lebel;Montaje: Guillaume Lebel;Diseño de sonido: Guillaume Lebel;Agencia: Alter Bureau;Productora: Iconoclast;Productor: Jean Duhamel;Diseño de producción: Inès Marty Monzon;Color: Epilogue;Estudio de postproducción: Everest", "Marca: Louis Vuitton;Tipo: Película de campaña;Temática: Fórmula 1, Ciudad"], ["v", "1099670651", "&Tradition x Industrial Facility", "", "Película dirigida por Ludvig Frøkjær Thomsen para &Tradition con Industrial Facility; la etiqueta cita a Tuomas Nurmi.", "Dirección: Ludvig Frøkjær Thomsen;Etiqueta: Tuomas Nurmi", "Marca: &Tradition, Industrial Facility;Tipo: Película de marca;Temática: Diseño, Mobiliario, Entrevista"], ["v", "1191627623", "Rimowa Lehni – Director’s cut", "", "Director’s cut de la colaboración de Rimowa con Lehni, centrada en el proceso y la artesanía.", "Dirección: Burak Erinmez;DOP: Tuomas Nurmi;Producción: Farbfilm;EP: Flo Brunner;Agencia: Profiler;Dirección creativa: Sebastian Vargas;Color: Fabio Gasser;Montaje: Burak Erinmez;Música: Cheng Zhuang;VFX: Slavko Gavric", "Marca: Rimowa, Lehni;Tipo: Película de colaboración;Temática: Proceso, Artesanía, Mobiliario"], ["v", "1106094028", "TEKLA", "", "Pieza de Tekla rodada en Berlín, con danza y la etiqueta de Doug Durant.", "Dirección: Gillian Garcia;Protagonista: @francaele;Productora: Clara Perrotte (Un Produced);Montaje: Andrea Franco;Color: Brennan Barsell;Gaffer: Avner Eisenstein;Cámara y luz: ARRI Rental Berlín;Laboratorio y escaneado: Cinegrell", "Marca: Tekla;Tipo: Fashion film;Temática: Danza, Textiles;Lugar: Berlín"], ["y", "O2n2o8snbWk", "PRADA GENTLE MONSTER Campaign Film", "", "Film de campaña de la colaboración Prada Gentle Monster con Kentaro Sakaguchi, construido sobre un libro del que surgen cinco fuerzas ficticias: tierra, agua, fuego, aire y amor.", "Protagonista: Kentaro Sakaguchi", "Marca: Prada, Gentle Monster;Tipo: Fashion film;Temática: Gafas, Fantasía, Libro;Lugar: Tokio"], ["y", "lyLxBhkwrIg", "RIMOWA | Introducing Ink Blue", "", "Presentación de Ink Blue, el nuevo color permanente de Rimowa Original, en un viaje de casualidades y curiosidad con la actriz Sydney Lemmon.", "Protagonista: Sydney Lemmon", "Marca: Rimowa;Tipo: Corto de producto;Temática: Color, Azul, Viaje"], ["y", "8MzOVYiZUR0", "CELINE Infinite Possibilities (video by Massimiliano Bomba)", "", "Vídeo de Massimiliano Bomba para Celine «Infinite Possibilities Silk», producido por Division Global, con un amplio equipo y modelos como Kylee Dixon, Viktoria Wirs, Hannah Weber, Haojie Qi y Anna Thomsen.", "Dirección: Massimiliano Bomba;Estilismo: Brian Molloy;DOP: @karimmmmx;Diseño de set: @moiruki;Peluquería: Duffy;Maquillaje: Christelle Cocquet;Montaje: Filippo Patelli;Color: Julien Alary;Retoque: Arthur Palluy;Diseño de sonido: @jsds.jsds.jsds;Productora: Division Global", "Marca: Celine;Tipo: Campaña;Temática: Seda, Magia"], ["y", "IBPLBvoRxzo", "Love Monster | FENDI Couture Fall/Winter 2026-2027", "", "Capítulo de apertura de Fendi Couture OI 2026-2027: un recorrido sensual desde Villa Borghese por la Galleria Nazionale d’Arte Moderna e Contemporanea, sobre sensualidad, libertad y placer.", "Dirección: Valeria Golino;Protagonistas: Leila George, Pietro Castellitto", "Marca: Fendi;Tipo: Fashion film;Temática: Sensualidad, Libertad, Alta costura;Lugar: Roma"], ["y", "aGd9Bl_wH0Q", "Men’s Fall-Winter 2026 | LOUIS VUITTON", "", "Introducción al desfile de hombre OI 2026 de Louis Vuitton, de Pharrell Williams, con tejidos adaptativos y oficio artesanal.", "Dirección creativa: Pharrell Williams", "Marca: Louis Vuitton;Tipo: Desfile (intro);Temática: Pasarela, Otoño-invierno 2026;Lugar: París"]];
 MORE.forEach(function (m) { DEFAULTS.push([m[0], m[1], m[2], m[3], m[4], m[5], m[6], undefined, ""]); });
+var BAKED = {"2poI7LCnHM4": {"t": "Gentle Monster, la marca surcoreana de gafas conocida por su universo visual, da el salto a las gafas inteligentes con una pieza que prefiere el lenguaje del cine al del anuncio. El teaser, difundido el 6 de noviembre de 2026, presenta su primera colección Intelligent Eyewear y está dirigido por Jonathan Glazer, el cineasta de Under the Skin y The Zone of Interest, con Joaquin Phoenix como protagonista. La película completa llegará a mediados de noviembre.\n\nSegún la descripción de Hypebae, Phoenix interpreta a un viajante atrapado en un hotel desconocido donde la realidad empieza a deshacerse. Recorre un pasillo iluminado en rojo, se cruza con personajes inexplicables y aprende a comunicarse a través de unas gafas dotadas de tecnología. La premisa convierte el producto en dispositivo narrativo: las gafas no se exhiben, son el medio por el que el personaje vuelve a entender lo que le rodea. La propia marca resume la pieza como un viaje cinematográfico entre la realidad y el sueño.\n\nEl tono es el de un cortometraje de autor más que el de una campaña convencional. The Impression habla de un lenguaje de cine psicológico que explora cómo cambia la relación entre la percepción humana y la tecnología, y Engadget observa que el teaser se inclina más hacia el cine experimental que hacia un anuncio directo. Esa elección sitúa a Gentle Monster en el terreno del imaginario artístico, donde la marca ya se mueve, y no en el de la ficha de producto.\n\nEl casting añade otra capa de sentido. Engadget y Hypebae recuerdan que Phoenix protagonizó Her en 2013, la historia de un hombre que se enamora de una inteligencia artificial, y esta última lo presenta como un guiño creativo a ese papel. Reunir a ese actor con el director de Under the Skin dialoga con el tema del producto sin necesidad de nombrarlo.\n\nFuera de la pantalla, las gafas se desarrollan con Google y Samsung sobre la plataforma Android XR. Las reservas abren el 12 de noviembre, con una presentación pública en Nueva York del 13 al 23 de noviembre y llegada a la venta en diciembre. La crítica no pierde de vista la duda práctica: The Impression escribe que queda por ver si la tecnología puede hacer que lo cotidiano resulte tan extraordinario como sugiere la película.", "s": "FashionUnited — Gentle Monster reveals first look at intelligent eyewear film with Joaquin Phoenix | https://fashionunited.uk/news/fashion/gentle-monster-reveals-first-look-at-intelligent-eyewear-film-with-joaquin-phoenix/2026110691244\nRolling Stone UK — Gentle Monster casts Joaquin Phoenix in its Intelligent Eyewear campaign | https://www.rollingstone.co.uk/style/gentle-monster-intelligent-eyewear-campaign-short-film-65702/\nVariety — Joaquin Phoenix Stars in AI Eyewear Campaign Directed by Jonathan Glazer | https://variety.com/2026/shopping/news/joaquin-phoenix-ai-eyewear-campaign-jonathan-glazer-1236941252/\nHypebae — Gentle Monster Taps Joaquin Phoenix For Its Intelligent Eyewear Campaign | https://hypebae.com/2026/11/gentle-monster-joaquin-phoenix-intelligent-eyewear-campaign-film-smart-glasses-pre-order-where-to-buy\nEngadget — Google's eyewear partners can't keep a lid on its smart glasses plans | https://www.engadget.com/2309631/googles-eyewear-partners-cant-keep-a-lid-on-its-smart-glasses-plans/\nThe Impression — Gentle Monster Fall 2026 Ad Campaign | https://theimpression.com/?p=12073987\nAndroid Authority — Gentle Monster teases Samsung Android XR glasses with some help from Joaquin Phoenix | https://www.androidauthority.com/joaquin-phoenix-smart-glasses-teaser-3732678/\nGagadget — Gentle Monster's Gemini glasses open for pre-order on Nov 12 | https://gagadget.com/en/733154-gentle-monsters-gemini-glasses-open-for-pre-order-on-nov-12/"}};
+DEFAULTS.forEach(function (d) { var b = BAKED[d[1]]; if (b) { d[7] = b.t; d[10] = b.s; } });
+var TOP = [["y", "0yZkPQChcZU", "Intelligent Eyewear NYC Pop Up", "", "Gentle Monster presenta en Nueva York el evento de vista previa de Intelligent Eyewear junto a Google y Samsung, con reservas en EE. UU. y Corea. Algunos elementos reinterpretan la obra de Jean Jacques Balzac.", "Colaboran: Google, Samsung;Obra reinterpretada: Jean Jacques Balzac", "Marca: Gentle Monster;Tipo: Evento;Temática: Gafas inteligentes, Arte;Lugar: Nueva York"], ["v", "1117737054", "Zara Home | Le Doyenné", "", "Story 03 con James Henry en Le Doyenné, un restaurante en un granero restaurado del sur de París; el chef australiano une sostenibilidad, comunidad y artesanía con un menú de temporada.", "Protagonista: James Henry;Etiqueta: Emir Eralp", "Marca: Zara Home, Le Doyenné;Tipo: Serie documental;Temática: Gastronomía, Sostenibilidad;Lugar: París"], ["v", "1114831916", "Gucci FW 25 – Awkward Moments", "", "Campaña otoño-invierno 2025 de Gucci, «Awkward Moments», dirigida por Lisa Rovner.", "Dirección: Lisa Rovner;DOP: Yorick Le Saux;Dirección de arte: Riccardo Zanola;Estilismo: Suzanne Coller;Montaje: Francesco Roma;Color: Jamie Noble (Studio RM)", "Marca: Gucci;Tipo: Campaña;Temática: Otoño-invierno 2025"], ["v", "1225993480", "Dior & A24 by Aidan Zamiri", "", "Cortometraje de Dior con A24 dirigido por Aidan Zamiri, con etiqueta de JW Anderson.", "Dirección: Aidan Zamiri;Etiquetas: JW Anderson, A24", "Marca: Dior, A24;Tipo: Cortometraje;Temática: Cine, Moda"], ["v", "1065432297", "BYREDO Blanche", "", "Campaña de la fragancia Blanche de Byredo, rodada en Kodak, con Imre van Opstal y Heather Kemesky.", "Dirección: Julien Pujol;DOP: Malgorzata Rabczuk;Talentos: Imre van Opstal, Heather Kemesky;Fotografía: Matthew Tammaro;Diseño de set: Olivia Aine;Estilismo: Ondine Azoulay;AC: Pablo Rasmussen;Maquillaje: @canakoxx;Peluquería: @yann_turchi;Manicura: @alexfeller;Producción: Counsel", "Marca: Byredo;Tipo: Campaña de fragancia;Temática: Perfume;Formato: Kodak"], ["v", "1243348537", "AMBUSH x UGG Featuring Yuki Chiba", "", "Pieza narrativa de Ambush x Ugg con Yuki Chiba; las etiquetas citan a Xavier Tera.", "Protagonista: Yuki Chiba;Etiqueta: Xavier Tera", "Marca: Ambush, Ugg;Tipo: Corto narrativo;Temática: Calzado"], ["v", "1209539062", "WALLPAPER* MAG x FORMAFANTASMA", "", "Formafantasma crea para los Wallpaper* Design Awards 2026 un trofeo de papel plano que cada premiado monta por sí mismo, «celebratorio, alegre y deliberadamente simple», a partir de referencias como Ore Streams, Maison Matisse, Giacomo Balla y Bruno Munari, en tres piezas de papel Gmund Colors Matt.", "Diseño: Formafantasma (Andrea Trimarchi, Simone Farresin);Etiqueta: Nicolo Bassetto", "Marca: Wallpaper* Magazine;Tipo: Entrevista;Temática: Diseño, Papel, Premios"], ["v", "1245328457", "Jordan Hemingway – Miu Miu 26 Campaign", "", "Campaña SS26 de Miu Miu, «on cloud nine», con Olivia Rodrigo y dirección de Jordan Hemingway.", "Dirección: Jordan Hemingway;DOP: Christopher Blauvelt;Productora: GE Projects;Dirección creativa: Miuccia Prada;Dirección de arte: Christopher Simmonds;Fotografía: Jamie Hawkesworth;Estilismo: Lotta Volkova;Protagonista: Olivia Rodrigo", "Marca: Miu Miu;Tipo: Campaña;Temática: Primavera-verano 2026"], ["y", "kl0BSfdhJ80", "Loli Bahia Is More Than Fashion’s French Muse", "", "Models.com sigue a la modelo Loli Bahia por París (la librería Ofr., la sede de Adidas y su valla sobre el Sena) en un retrato dirigido por Montgomery White.", "Dirección: Montgomery White;Entrevista: Irene Ojo-Felix;Editor jefe: Stephan Moskovic;Ayudante de cámara: Barnabé White;Postproducción: Constant Fernandez;Color: Lou Lorigné", "Marca: Models.com;Tipo: Entrevista documental;Temática: Modelaje, Saint Laurent;Lugar: París"], ["y", "yhmXt6cJXk8", "Anne Imhof: House of Swans | Tai Kwun Contemporary", "", "Vídeo de la exposición «House of Swans» de Anne Imhof en Tai Kwun Contemporary, Hong Kong (del 25.9.2026 al 3.1.2027).", "Artista: Anne Imhof;Institución: Tai Kwun Contemporary", "Marca: Tai Kwun Contemporary;Tipo: Exposición;Temática: Arte contemporáneo, Instalación;Lugar: Hong Kong"], ["y", "iEgVE_6-vSY", "Prada Film Fund Trailer", "", "Tráiler del Fondo de Cine de la Fondazione Prada (1,5 millones de euros para largometrajes en desarrollo, producción y posproducción), rodado en Kodak 16 mm con Arri SR3, Arri Ultra Prime y Optex 8 mm.", "Dirección: Michele Formica;Dirección de arte: Chiara Adele Ruozzo;DOP: Alessandro Ressia;Producción: Goofy Studio;Montaje: Enrico Abbattista, Fabio Ricchiuti;Música: Francesco Piro", "Marca: Prada, Fondazione Prada;Tipo: Tráiler;Temática: Cine, Fondo de cine;Formato: Kodak 16 mm"], ["v", "1235513001", "ON Running – Seriously Tested (Director’s Cut)", "", "Director’s cut de una película para ON que su director no había compartido hasta ahora, rodada el verano anterior.", "Dirección: Felix Aaron;DOP: Hugo Carlier;Producción: It Takes Time;EP: Jan Hellerung;Montaje: Michael Weicker;Color: @herebobo;Estilismo: Peninah Amanda;Diseño de set: Studio Britz", "Marca: ON;Tipo: Película de campaña;Temática: Running, Deporte"]];
+var TOPIDS = {};
+TOP.slice().reverse().forEach(function (m) { TOPIDS[m[1]] = 1; DEFAULTS.unshift([m[0], m[1], m[2], m[3], m[4], m[5], m[6], undefined, ""]); });
 
-var KEY = "visionnaire.v1", mode = "tumblr", edit = false, V = [];
+var KEY = "visionnaire.v1", mode = "direct", edit = false, V = [];
 
 function load() {
-  try { var r = localStorage.getItem(KEY); if (r) { var a = JSON.parse(r); if (Array.isArray(a) && a.length) { a.forEach(function (v) { if (v) { var d = DEFAULTS.filter(function (x) { return x[1] === v[1]; })[0]; if (d) { if (v[4] == null) { v[4] = d[4]; v[5] = d[5]; } if (v[6] == null) { v[6] = d[6]; v[8] = d[8]; } } } }); try { if (!localStorage.getItem("visionnaire.m200")) { DEFAULTS.slice(50).forEach(function (d) { if (!a.some(function (v) { return v && v[1] === d[1]; })) a.push(d.slice()); }); localStorage.setItem("visionnaire.m200", "1"); localStorage.setItem(KEY, JSON.stringify(a)); } } catch (e2) {} return a; } } } catch (e) {}
+  try { var r = localStorage.getItem(KEY); if (r) { var a = JSON.parse(r); if (Array.isArray(a) && a.length) { a.forEach(function (v) { if (v) { var d = DEFAULTS.filter(function (x) { return x[1] === v[1]; })[0]; if (d) { if (v[4] == null) { v[4] = d[4]; v[5] = d[5]; } if (v[6] == null) { v[6] = d[6]; v[8] = d[8]; } if (v[7] == null && d[7]) { v[7] = d[7]; v[10] = d[10]; } } } }); try { if (!localStorage.getItem("visionnaire.m200")) { DEFAULTS.slice(50).forEach(function (d) { if (!a.some(function (v) { return v && v[1] === d[1]; })) a.push(d.slice()); }); localStorage.setItem("visionnaire.m200", "1"); localStorage.setItem(KEY, JSON.stringify(a)); } } catch (e2) {}
+      try { if (!localStorage.getItem("visionnaire.mtop")) { var tadd = DEFAULTS.filter(function (d) { return TOPIDS[d[1]] && !a.some(function (v) { return v && v[1] === d[1]; }); }).map(function (d) { return d.slice(); }); a = tadd.concat(a); localStorage.setItem("visionnaire.mtop", "1"); localStorage.setItem(KEY, JSON.stringify(a)); } } catch (e3) {}
+      return a; } } } catch (e) {}
   return DEFAULTS.map(function (x) { return x.slice(); });
 }
 function save() { try { localStorage.setItem(KEY, JSON.stringify(V)); } catch (e) {} }
@@ -270,15 +568,20 @@ function watchUrl(v) {
   return "https://vimeo.com/" + v[1] + (v[3] && v[3].indexOf("h=") === 0 ? "/" + v[3].slice(2) : "");
 }
 function src(v) {
-  if (mode === "tumblr") return "https://safe.txmblr.com/svc/embed/inline/" + encodeURIComponent(watchUrl(v));
+  if (mode === "tumblr" || needProxy(v)) return "https://safe.txmblr.com/svc/embed/inline/" + encodeURIComponent(watchUrl(v));
   if (v[0] === "y") return "https://www.youtube.com/embed/" + v[1] + "?rel=0&playsinline=1" + (v[3] ? "&" + v[3] : "");
   return "https://player.vimeo.com/video/" + v[1] + (v[3] ? "?" + v[3] : "");
 }
 function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt) e.textContent = txt; return e; }
 function btn(txt, fn) { var b = el("button", "b", txt); b.type = "button"; b.addEventListener("click", fn); return b; }
+function playSrc(v) {
+  if (mode === "tumblr" || needProxy(v)) return src(v);
+  if (v[0] === "y") return "https://www.youtube.com/embed/" + v[1] + "?autoplay=1&rel=0&playsinline=1&enablejsapi=1" + (location.origin.indexOf("http") === 0 ? "&origin=" + encodeURIComponent(location.origin) : "") + (v[3] ? "&" + v[3] : "");
+  return "https://player.vimeo.com/video/" + v[1] + "?autoplay=1" + (v[3] ? "&" + v[3] : "");
+}
 function frame(v) {
   var f = el("iframe");
-  f.src = src(v); f.title = v[2];
+  f.src = src(v); f.title = v[2]; f.referrerPolicy = "strict-origin-when-cross-origin";
   f.allow = "autoplay; fullscreen; picture-in-picture; encrypted-media";
   f.allowFullscreen = true;
   return f;
@@ -319,7 +622,7 @@ function openEdit(i) {
   row.appendChild(btn("Guardar", function () {
     var p = parse(u.value);
     if (!p) { err.textContent = "No reconozco ese enlace. Pega una URL de YouTube o Vimeo, o el código embed."; return; }
-    p[2] = t.value.trim() || "Sin título"; p[4] = r.value.trim(); p[5] = c.value.trim(); p[6] = g.value.trim(); p[7] = w.value.trim(); if (cur && cur[8]) p[8] = cur[8];
+    p[2] = t.value.trim() || "Sin título"; p[4] = r.value.trim(); p[5] = c.value.trim(); p[6] = g.value.trim(); p[7] = w.value.trim(); if (cur && cur[8]) p[8] = cur[8]; if (cur) { p[9] = cur[9]; p[10] = cur[10]; }
     V[i] = p; save(); o.remove(); build();
   }));
   row.appendChild(btn("Cancelar", function () { o.remove(); }));
@@ -341,17 +644,26 @@ function openBackup() {
 }
 function posterEl(v) {
   var p = el("div", "poster"); p.setAttribute("role", "button"); p.tabIndex = 0; p.title = v[2];
-  p.appendChild(el("span", "ptitle", v[2]));
   var img = el("img"); img.alt = ""; img.loading = "lazy"; img.referrerPolicy = "no-referrer";
   img.src = v[0] === "y" ? "https://i.ytimg.com/vi/" + v[1] + "/hqdefault.jpg" : "https://vumbnail.com/" + v[1] + ".jpg";
   img.addEventListener("error", function () { img.remove(); });
   p.appendChild(img);
   p.appendChild(el("span", "play"));
+  var pill = el("div", "pill"), pav = el("span", "av"), ppt = el("span", "pt");
+  setAv(pav, v); ppt.appendChild(el("b", "", deptOf(v).n + "  " + v[2])); ppt.appendChild(el("i", "", byline(v)));
+  pill.appendChild(pav); pill.appendChild(ppt);
+  pill.addEventListener("click", function (e) { e.stopPropagation(); openPanel(V.indexOf(v)); });
+  p.appendChild(pill);
+  var cr = el("div", "chips-r"), tg = tagOf(v), nf = FAV[vkey(v)] ? FAV[vkey(v)].frames.length : 0, tp = typeOf(v);
+  if (isFav(v)) cr.appendChild(el("span", "", "★" + (nf ? " " + nf : "")));
+  p.appendChild(cr);
   function go() {
+    if (EMB.frames) { window.open(watchUrl(v), "_blank", "noopener"); return; }
     var box = p.parentNode, f = el("iframe");
-    f.src = mode === "tumblr" ? src(v) : (v[0] === "y" ? "https://www.youtube.com/embed/" + v[1] + "?autoplay=1&rel=0&playsinline=1" + (v[3] ? "&" + v[3] : "") : "https://player.vimeo.com/video/" + v[1] + "?autoplay=1" + (v[3] ? "&" + v[3] : ""));
+    f.src = playSrc(v); f.referrerPolicy = "strict-origin-when-cross-origin";
     f.title = v[2]; f.allow = "autoplay; fullscreen; picture-in-picture; encrypted-media"; f.allowFullscreen = true;
     box.innerHTML = ""; box.appendChild(f);
+    watchEnd(f, v, function () { box.innerHTML = ""; box.appendChild(posterEl(v)); });
   }
   p.addEventListener("click", go);
   p.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
@@ -361,37 +673,82 @@ function placeholder() { return el("div", "empty", "Hueco vacío"); }
 function viewer(v) {
   var f = frame(v); return f;
 }
+var HERO_N = 5;
+function heroPlay(sl, v, i) {
+  if (EMB.frames) { window.open(watchUrl(v), "_blank", "noopener"); return; }
+  sl.classList.add("playing");
+  var f = el("iframe", "hs-frame"); f.src = playSrc(v); f.title = v[2]; f.referrerPolicy = "strict-origin-when-cross-origin";
+  f.allow = "autoplay; fullscreen; picture-in-picture; encrypted-media"; f.allowFullscreen = true;
+  sl.innerHTML = ""; sl.appendChild(f);
+  watchEnd(f, v, function () { sl.replaceWith(heroSlide(i)); });
+  var x = btn("✕", function () { sl.replaceWith(heroSlide(i)); }); x.className = "hs-x"; sl.appendChild(x);
+}
+function heroSlide(i) {
+  var v = V[i], sl = el("div", "hs");
+  if (!v) { sl.appendChild(placeholder()); if (edit) sl.appendChild(controls(i)); return sl; }
+  var img = el("img", "hs-img"); img.alt = ""; img.referrerPolicy = "no-referrer";
+  img.src = v[0] === "y" ? "https://i.ytimg.com/vi/" + v[1] + "/maxresdefault.jpg" : "https://vumbnail.com/" + v[1] + ".jpg";
+  img.addEventListener("error", function () { if (v[0] === "y" && img.src.indexOf("maxres") > -1) img.src = "https://i.ytimg.com/vi/" + v[1] + "/hqdefault.jpg"; else img.remove(); });
+  sl.appendChild(img);
+  var c = el("div", "hs-c"); c.appendChild(el("p", "hs-code", deptOf(v).n + " — " + deptOf(v).name.toUpperCase())); c.appendChild(el("h1", "", v[2]));
+  var by = el("p", "hs-by", byline(v)), ab = btn("Abrir", function () { openPanel(i); }); ab.className = "mini"; by.appendChild(ab); c.appendChild(by);
+  sl.appendChild(c);
+  sl.classList.add("hs-click"); sl.tabIndex = 0; sl.setAttribute("role", "button"); sl.setAttribute("aria-label", "Reproducir " + v[2]);
+  sl.addEventListener("click", function (e) { if (sl.classList.contains("playing") || e.target.closest(".mini, .ctl, .hs-x")) return; heroPlay(sl, v, i); });
+  sl.addEventListener("keydown", function (e) { if ((e.key === "Enter" || e.key === " ") && e.target === sl) { e.preventDefault(); heroPlay(sl, v, i); } });
+  if (edit) sl.appendChild(controls(i));
+  return sl;
+}
+function heroBuild(hero) {
+  var list = [], i; for (i = 0; i < HERO_N && i < V.length; i++) list.push(i);
+  var track = el("div", "hero-track");
+  list.forEach(function (j) { track.appendChild(heroSlide(j)); });
+  hero.appendChild(track);
+  var nav = el("div", "hero-nav"), dots = el("div", "hero-dots"), cnt = el("span", "hero-cnt");
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  function upd() {
+    var n = Math.max(0, Math.min(list.length - 1, Math.round(track.scrollLeft / (track.clientWidth || 1))));
+    Array.prototype.forEach.call(dots.children, function (d, k) { d.classList.toggle("on", k === n); });
+    cnt.textContent = pad(n + 1) + " / " + pad(list.length);
+  }
+  list.forEach(function (j, n) {
+    var d = el("button", "hd-dot"); d.type = "button"; d.setAttribute("aria-label", "Destacado " + (n + 1));
+    d.addEventListener("click", function () { track.scrollTo({ left: n * track.clientWidth, behavior: "smooth" }); });
+    dots.appendChild(d);
+  });
+  nav.appendChild(dots); nav.appendChild(cnt); hero.appendChild(nav);
+  [["l", "back", -1], ["r", "next", 1]].forEach(function (a) {
+    var b = el("button", "hero-arr " + a[0]); b.type = "button"; b.innerHTML = IC[a[1]]; b.setAttribute("aria-label", a[2] < 0 ? "Anterior" : "Siguiente");
+    b.addEventListener("click", function () { track.scrollBy({ left: a[2] * track.clientWidth, behavior: "smooth" }); });
+    hero.appendChild(b);
+  });
+  track.addEventListener("scroll", upd, { passive: true }); upd();
+}
 function build() {
   var hero = document.getElementById("hero"), grid = document.getElementById("grid");
   hero.innerHTML = ""; grid.innerHTML = "";
   document.body.classList.toggle("edit", edit);
-  var bf = document.getElementById("favs"); if (bf) bf.textContent = "★ Favoritos (" + Object.keys(FAV).length + ")";
+  document.body.classList.toggle("nohero", cols !== 2);
+  var bf = document.getElementById("favs"); if (bf) bf.textContent = "★ Favoritos (" + Object.keys(FAV).length + ")"; var pc = document.getElementById("pcount"); if (pc) pc.textContent = Object.keys(FAV).length;
   grid.dataset.cols = cols;
   grid.style.setProperty("--cols", cols);
   Array.prototype.forEach.call(document.querySelectorAll("#cols button"), function (b) { b.classList.toggle("on", +b.dataset.n === cols); });
-  var h = V[0];
-  if (h) {
-    hero.appendChild(viewer(h));
-    hero.appendChild(el("h1", "", h[2]));
-    var hl = el("div", "herolink"), a = el("a", "", h[0] === "y" ? "Ver en YouTube" : "Ver en Vimeo");
-    a.href = watchUrl(h); a.target = "_blank"; a.rel = "noopener"; hl.appendChild(a); hl.appendChild(openBtn(0)); hero.appendChild(hl);
-  } else { hero.appendChild(placeholder()); }
+  if (cols === 2) heroBuild(hero);
+  hero.style.display = cols === 2 ? "" : "none";
+  renderDeps();
   var fb = document.getElementById("fbar"); fb.innerHTML = "";
   if (filter) {
     fb.hidden = false;
-    fb.appendChild(el("span", "", filter.label + (filter.val === "★fav" ? "" : ": " + filter.val) + " · " + V.filter(function (w, k) { return k > 0 && w && matches(w); }).length + " vídeos"));
+    fb.appendChild(el("span", "", filter.label + (filter.val === "★fav" || !filter.val ? "" : ": " + filter.val) + " · " + V.filter(function (w, k) { return k > 0 && w && matches(w); }).length + " vídeos"));
     fb.appendChild(btn("Quitar filtro ✕", function () { filter = null; build(); }));
   } else fb.hidden = true;
-  if (edit) { var hc = controls(0); hc.className = "ctl heroctl"; hero.appendChild(hc); }
   V.forEach(function (v, i) {
-    if (i === 0) return;
+    if (!filter && cols === 2 && i < HERO_N) return;
     if (filter && (!v || !matches(v))) return;
     var item = el("article", "item"), box = el("div", "frame");
     if (v) { box.appendChild(posterEl(v)); } else { box.appendChild(placeholder()); }
     item.appendChild(box);
-    var p = el("p", "", v ? (isFav(v) ? "★ " : "") + v[2] + (FAV[vkey(v)] && FAV[vkey(v)].frames.length ? " · " + FAV[vkey(v)].frames.length + " capt." : "") : "Hueco vacío");
-    if (v) { p.appendChild(document.createTextNode(" · ")); var l = el("a", "", v[0] === "y" ? "Ver en YouTube" : "Ver en Vimeo"); l.href = watchUrl(v); l.target = "_blank"; l.rel = "noopener"; p.appendChild(l); p.appendChild(document.createTextNode(" ")); p.appendChild(openBtn(i)); }
-    item.appendChild(p);
+    if (!v) item.appendChild(el("p", "", "Hueco vacío"));
     if (edit) item.appendChild(controls(i));
     grid.appendChild(item);
   });
@@ -433,7 +790,34 @@ function rows(str) {
   });
   return out;
 }
-function matches(w) { if (filter.val === "★fav") return isFav(w); var val = filter.val.toLowerCase(); return rows(w[5]).concat(rows(w[6])).some(function (r) { return r.n.some(function (n) { return n.toLowerCase() === val; }); }); }
+var DEPTS = [["001", "Campañas"], ["002", "Desfiles"], ["003", "Films"], ["004", "Retratos"], ["005", "Procesos"], ["006", "Fragancia y producto"], ["007", "Arte y diseño"], ["008", "Otros"]];
+function deptOf(v) {
+  var t = norm(typeOf(v)), i = 7;
+  if (/making|backstage|proceso/.test(t)) i = 4;
+  else if (/desfile|pasarela/.test(t)) i = 1;
+  else if (/fragancia|producto|belleza/.test(t)) i = 5;
+  else if (/exposicion|instalacion|arte|diseno|objeto|tienda|evento/.test(t)) i = 6;
+  else if (/retrato|entrevista|documental|ensayo|podcast|serie/.test(t)) i = 3;
+  else if (/film|corto|trailer|teaser|experimental/.test(t)) i = 2;
+  else if (/campana|colaboracion|marca|lanzamiento|coleccion|pieza|pelicula/.test(t)) i = 0;
+  return { n: DEPTS[i][0], name: DEPTS[i][1] };
+}
+function renderDeps() {
+  var box = document.getElementById("deps"); if (!box) return;
+  box.innerHTML = "";
+  var cnt = {}; V.forEach(function (v) { if (v) { var n = deptOf(v).n; cnt[n] = (cnt[n] || 0) + 1; } });
+  var all = el("button", filter ? "" : "on", "Todo " + V.filter(Boolean).length); all.type = "button";
+  all.addEventListener("click", function () { filter = null; build(); });
+  box.appendChild(all);
+  DEPTS.forEach(function (d) {
+    if (!cnt[d[0]]) return;
+    var b = el("button", filter && filter.dept === d[0] ? "on" : "", d[0] + " " + d[1] + " " + cnt[d[0]]); b.type = "button";
+    b.addEventListener("click", function () { filter = { label: d[0] + " " + d[1], val: "", dept: d[0] }; build(); tvEl("fbar").scrollIntoView({ behavior: "smooth" }); });
+    box.appendChild(b);
+  });
+}
+function matches(w) {
+  if (filter.dept) return deptOf(w).n === filter.dept; if (filter.keys) return !!filter.keys[vkey(w)]; if (filter.val === "★fav") return isFav(w); var val = filter.val.toLowerCase(); return rows(w[5]).concat(rows(w[6])).some(function (r) { return r.n.some(function (n) { return n.toLowerCase() === val; }); }); }
 function setFilter(label, val) { filter = { label: label, val: val }; closePanel(); build(); document.getElementById("fbar").scrollIntoView({ behavior: "smooth" }); }
 function relNames(w) { return rows(w[5]).concat(rows(w[6])).filter(function (r) { return !/^(Tipo|Temática|Lugar|Formato)/.test(r.k); }).reduce(function (a, r) { return a.concat(r.n); }, []); }
 function related(v) {
@@ -542,9 +926,74 @@ function allFrames(k) {
   return a.concat((TRAY[k] || []).map(function (f) { return { id: f.id, d: f.d, saved: false }; }));
 }
 function refreshCaps() { var old = document.getElementById("capsec"); if (old && cur >= 0 && V[cur]) old.replaceWith(capSection(V[cur])); }
+function srcBlock(box, v) {
+  if (!v[10]) return;
+  box.appendChild(el("h3", "", "Fuentes"));
+  var ul = el("div", "srcs");
+  String(v[10]).split("\n").forEach(function (ln) {
+    ln = ln.trim(); if (!ln) return;
+    var k = ln.lastIndexOf("|"), t = k > 0 ? ln.slice(0, k).trim() : ln, u = k > 0 ? ln.slice(k + 1).trim() : "";
+    var r = el(u ? "a" : "span", "src", t); if (u) { r.href = u; r.target = "_blank"; r.rel = "noopener"; }
+    ul.appendChild(r);
+  });
+  box.appendChild(ul);
+}
+async function agentWrite(v, refs, st) {
+  var sm = (typeof SR !== "undefined" && SR.sample) || await capUse("sample");
+  if (!sm) { st.textContent = "El agente de redacción solo funciona dentro del visor de Claude."; return; }
+  st.textContent = "Redactando…";
+  var meta = ["Título: " + v[2], "Marca: " + brandOf(v), "Tipo: " + typeOf(v), "Temática: " + nameRow(v, /^Tem/).join(", "), "Lugar: " + nameRow(v, /^Lugar/).join(", "), "Ficha técnica: " + (v[5] || ""), "Resumen: " + (v[4] || "")].join("\n");
+  var prompt = "Eres crítico y redactor de una revista de cine y moda. Escribe en español un artículo de cinco párrafos (350 a 450 palabras en total) sobre el proyecto audiovisual descrito, centrado en su dimensión artística: dirección, imagen y fotografía, ritmo y montaje, sonido, referencias culturales y relación con la marca. Usa SOLO los datos de la ficha y de las referencias; si algo no aparece en ellas, no lo inventes ni lo afirmes. Parafrasea las referencias con tus palabras, sin citas literales largas. No uses títulos, viñetas ni listas; separa los párrafos con una línea en blanco. Si las referencias son escasas, escribe menos párrafos antes que inventar.\n\nFICHA\n" + meta + "\n\nREFERENCIAS\n" + (refs || "(sin referencias)");
+  try {
+    var r = await sm(prompt);
+    var tx = String((r && r.text) || "").trim();
+    if (!tx) throw new Error("vacío");
+    v[7] = tx; v[9] = refs; save(); renderPanel();
+  } catch (e) { st.textContent = "No se pudo redactar ahora: " + ((e && (e.code || e.message)) || "error") + "."; }
+}
+function agentBlock(v) {
+  var sec = el("section", "agent");
+  sec.appendChild(el("h3", "", "Agente de redacción"));
+  sec.appendChild(el("p", "capmsg2", "Pega texto o enlaces de revistas, redes o artículos sobre este proyecto. El agente los toma como referencia y redacta un artículo de varios párrafos sobre su dimensión artística. No navega por internet por sí mismo: trabaja con lo que pegues."));
+  var ta = el("textarea"); ta.placeholder = "Referencias: notas de prensa, citas, enlaces, descripciones…"; ta.value = v[9] || "";
+  var st = el("p", "capmsg", "");
+  var go = btn("Redactar artículo", function () { go.disabled = true; agentWrite(v, ta.value.trim(), st).then(function () { go.disabled = false; }); });
+  sec.appendChild(ta); sec.appendChild(go); sec.appendChild(st);
+  return sec;
+}
+function officialFrames(v) {
+  if (v[0] === "y") return ["hq1", "hq2", "hq3"].map(function (n) { return "https://i.ytimg.com/vi/" + v[1] + "/" + n + ".jpg"; });
+  return ["https://vumbnail.com/" + v[1] + ".jpg"];
+}
+function addOfficial(v, u) {
+  function fallback() { CAPMSG = "No se pudo leer esa imagen aquí (bloqueada por el visor o sin permiso). Se abre en otra pestaña para guardarla."; refreshCaps(); window.open(u, "_blank", "noopener"); }
+  var im = new Image(); im.crossOrigin = "anonymous";
+  im.onload = function () {
+    try {
+      var cv = document.createElement("canvas"); cv.width = im.naturalWidth; cv.height = im.naturalHeight;
+      cv.getContext("2d").drawImage(im, 0, 0);
+      var d = cv.toDataURL("image/jpeg", 0.85), id = Date.now() + "-" + Math.random().toString(36).slice(2, 6), k = vkey(v);
+      (TRAY[k] = TRAY[k] || []).push({ id: id, d: d }); SEL[id] = true;
+      CAPMSG = "Frame añadido como JPG. Selecciónalo para descargarlo o guardarlo en favoritos."; refreshCaps();
+    } catch (e) { fallback(); }
+  };
+  im.onerror = fallback; im.src = u;
+}
 function capSection(v) {
   var k = vkey(v), sec = el("section", "caps"); sec.id = "capsec";
   sec.appendChild(el("h3", "", "Capturas de frames"));
+  var ofl = officialFrames(v);
+  if (ofl.length) {
+    sec.appendChild(el("p", "capmsg2", "Frames del vídeo (JPG)"));
+    var orow = el("div", "ofr");
+    ofl.forEach(function (u, n) {
+      var t = el("div", "ofi"), im = el("img"); im.alt = "Frame " + (n + 1); im.referrerPolicy = "no-referrer"; im.src = u;
+      im.addEventListener("error", function () { t.remove(); });
+      var ab = btn("＋ JPG", function () { addOfficial(v, u); }); ab.className = "b ofb";
+      t.appendChild(im); t.appendChild(ab); orow.appendChild(t);
+    });
+    sec.appendChild(orow);
+  }
   var fr = allFrames(k), bar = el("div", "ctl capbar");
   function chosen() { return fr.filter(function (f) { return SEL[f.id]; }); }
   bar.appendChild(btn("Capturar frame", function () { takeFrame(v); }));
@@ -624,21 +1073,69 @@ async function takeFrame(v) {
     refreshCaps();
   } catch (e) { CAPMSG = capErr(e); refreshCaps(); }
 }
-var cur = -1, pTumblr = false, pf = document.getElementById("pf");
+var cur = -1, pMode = "", pTumblr = false, pf = document.getElementById("pf");
 function openBtn(i) { var b = btn("Abrir ▸", function () { openPanel(i); }); b.classList.add("open"); return b; }
+function PT() { var v = V[cur]; if (pMode) return pMode === "proxy"; return !!(v && needProxy(v)); }
 function panelSrc(v) {
-  if (pTumblr) return "https://safe.txmblr.com/svc/embed/inline/" + encodeURIComponent(watchUrl(v));
+  if (PT()) return "https://safe.txmblr.com/svc/embed/inline/" + encodeURIComponent(watchUrl(v));
   if (v[0] === "y") return "https://www.youtube.com/embed/" + v[1] + "?autoplay=1&rel=0&playsinline=1&enablejsapi=1" + (location.origin.indexOf("http") === 0 ? "&origin=" + encodeURIComponent(location.origin) : "") + (v[3] ? "&" + v[3] : "");
   return "https://player.vimeo.com/video/" + v[1] + "?autoplay=1" + (v[3] ? "&" + v[3] : "");
 }
 function cmd(a) {
   var f = document.getElementById("pf-frame"), v = V[cur];
-  if (!f || !v || pTumblr || !f.contentWindow) return;
+  if (!f || !v || PT() || !f.contentWindow) return;
   var m;
   if (v[0] === "y") m = { event: "command", func: { play: "playVideo", pause: "pauseVideo", mute: "mute", unmute: "unMute" }[a], args: [] };
   else m = a === "play" ? { method: "play" } : a === "pause" ? { method: "pause" } : { method: "setVolume", value: a === "mute" ? 0 : 1 };
   f.contentWindow.postMessage(JSON.stringify(m), "*");
 }
+function arrowBtn(txt, label, fn) { var b = btn(txt, fn); b.title = label; b.setAttribute("aria-label", label); return b; }
+var ENDW = [];
+function watchEnd(f, v, cb) {
+  if (mode === "tumblr" || needProxy(v)) return;
+  var o = { f: f, v: v, cb: cb, got: false };
+  ENDW.push(o);
+  f.addEventListener("load", function () {
+    var n = 0, t = setInterval(function () {
+      if (o.got || !f.isConnected || ++n > 20) { clearInterval(t); return; }
+      try {
+        var w = f.contentWindow;
+        if (v[0] === "y") {
+          w.postMessage(JSON.stringify({ event: "listening", id: 1, channel: "widget" }), "*");
+          w.postMessage(JSON.stringify({ event: "command", func: "addEventListener", args: ["onStateChange"], id: 1, channel: "widget" }), "*");
+        } else w.postMessage(JSON.stringify({ method: "addEventListener", value: "ended" }), "*");
+      } catch (e) {}
+    }, 700);
+  });
+}
+window.addEventListener("message", function (e) {
+  for (var i = 0; i < ENDW.length; i++) {
+    var o = ENDW[i];
+    if (!o.f.isConnected) { ENDW.splice(i--, 1); continue; }
+    if (e.source !== o.f.contentWindow) continue;
+    o.got = true;
+    var d = e.data; if (typeof d === "string") { try { d = JSON.parse(d); } catch (x) { return; } }
+    if (!d) return;
+    var ended = o.v[0] === "y" ? ((d.event === "infoDelivery" && d.info && d.info.playerState === 0) || (d.event === "onStateChange" && d.info === 0)) : d.event === "ended";
+    if (ended) { ENDW.splice(i, 1); o.cb(); }
+    return;
+  }
+});
+function ytListen(f) {
+  var n = 0, t = setInterval(function () {
+    if (!f.isConnected || ++n > 8) { clearInterval(t); return; }
+    try {
+      f.contentWindow.postMessage(JSON.stringify({ event: "listening", id: 1, channel: "widget" }), "*");
+      f.contentWindow.postMessage(JSON.stringify({ event: "command", func: "addEventListener", args: ["onError"], id: 1, channel: "widget" }), "*");
+    } catch (e) {}
+  }, 500);
+}
+window.addEventListener("message", function (e) {
+  var f = document.getElementById("pf-frame");
+  if (!f || cur < 0 || !V[cur] || V[cur][0] !== "y" || e.source !== f.contentWindow) return;
+  var d = e.data; if (typeof d === "string") { try { d = JSON.parse(d); } catch (x) { return; } }
+  if (d && d.event === "onError" && !PT()) { pMode = "proxy"; renderPanel(); }
+});
 function step(d) {
   var j = cur;
   do { j += d; } while (j >= 0 && j < V.length && !V[j]);
@@ -649,10 +1146,14 @@ function renderPanel() {
   document.getElementById("pf-title").textContent = v[2];
   var st = document.getElementById("pf-stage"); st.innerHTML = "";
   var f = el("iframe"); f.id = "pf-frame"; f.src = panelSrc(v); f.title = v[2];
-  f.allow = "autoplay; fullscreen; picture-in-picture; encrypted-media"; f.allowFullscreen = true;
-  st.appendChild(f);
+  f.allow = "autoplay; fullscreen; picture-in-picture; encrypted-media"; f.allowFullscreen = true; f.referrerPolicy = "strict-origin-when-cross-origin";
+  if (EMB.frames) {
+    var ob = el("div", "out-box"); ob.appendChild(el("p", "", "Este visor bloquea el reproductor de " + (v[0] === "y" ? "YouTube" : "Vimeo") + "."));
+    var oa = el("a", "b open", "Abrir en " + (v[0] === "y" ? "YouTube" : "Vimeo") + " ↗"); oa.href = watchUrl(v); oa.target = "_blank"; oa.rel = "noopener"; ob.appendChild(oa); st.appendChild(ob);
+  } else st.appendChild(f);
+  if (!EMB.frames && v[0] === "y" && !PT()) f.addEventListener("load", function () { ytListen(f); });
   var c = document.getElementById("pf-ctl"); c.innerHTML = "";
-  c.appendChild(btn("← Anterior", function () { step(-1); }));
+  c.appendChild(arrowBtn("←", "Anterior", function () { step(-1); }));
   var fbt = btn("", function () { toggleFav(v, fbt); }); fbt.id = "pf-fav"; setFavLabel(fbt, v); c.appendChild(fbt);
   c.appendChild(btn("Capturar frame", function () { takeFrame(v); }));
   c.appendChild(btn("Modo TV desde aquí", function () { var i = cur; closePanel(); tvOpen(i); }));
@@ -661,16 +1162,18 @@ function renderPanel() {
   c.appendChild(btn("Silenciar", function () { cmd("mute"); }));
   c.appendChild(btn("Sonido", function () { cmd("unmute"); }));
   c.appendChild(btn("Pantalla completa", function () { var e = document.getElementById("pf-stage"); if (e.requestFullscreen) e.requestFullscreen(); }));
-  c.appendChild(btn(pTumblr ? "Usar reproductor directo" : "Si no carga: reproductor Tumblr", function () { pTumblr = !pTumblr; renderPanel(); }));
+  c.appendChild(btn(PT() ? "Usar reproductor directo" : "Si no carga: reproductor alternativo", function () { pMode = PT() ? "direct" : "proxy"; renderPanel(); }));
   var a = el("a", "b", "Ver en " + (v[0] === "y" ? "YouTube" : "Vimeo")); a.href = watchUrl(v); a.target = "_blank"; a.rel = "noopener"; c.appendChild(a);
   c.appendChild(btn("Leer artículo ↓", function () { document.getElementById("pf-art").scrollIntoView({ behavior: "smooth" }); }));
-  c.appendChild(btn("Siguiente →", function () { step(1); }));
-  Array.prototype.forEach.call(c.querySelectorAll("button"), function (b) { if (pTumblr && /^(Play|Pausa|Silenciar|Sonido)$/.test(b.textContent)) b.disabled = true; });
+  c.appendChild(arrowBtn("→", "Siguiente", function () { step(1); }));
+  Array.prototype.forEach.call(c.querySelectorAll("button"), function (b) { if (PT() && /^(Play|Pausa|Silenciar|Sonido)$/.test(b.textContent)) b.disabled = true; });
   var art = document.getElementById("pf-art"); art.innerHTML = "";
   art.appendChild(el("h2", "", v[2]));
   art.appendChild(capSection(v));
   art.appendChild(el("h3", "", "Artículo"));
   articleParas(v).forEach(function (t) { art.appendChild(el("p", "", t)); });
+  srcBlock(art, v);
+  art.appendChild(agentBlock(v));
   rowsBlock(art, "Ficha técnica", rows(v[5]), v[5] || "Créditos no indicados");
   rowsBlock(art, "Categorías", rows(v[6]), "");
   var rel = related(v);
@@ -684,12 +1187,13 @@ function renderPanel() {
 }
 function openPanel(i) {
   if (!V[i]) return;
+  if (i !== cur) pMode = "";
   cur = i; renderPanel();
-  pf.classList.add("open"); pf.setAttribute("aria-hidden", "false");
+  pf.classList.add("open"); pf.setAttribute("aria-hidden", "false"); document.body.classList.add("pfon");
   document.body.style.overflow = "hidden";
 }
 function closePanel() {
-  pf.classList.remove("open"); pf.setAttribute("aria-hidden", "true");
+  pf.classList.remove("open"); pf.setAttribute("aria-hidden", "true"); document.body.classList.remove("pfon");
   document.getElementById("pf-stage").innerHTML = "";
   document.body.style.overflow = ""; cur = -1;
 }
@@ -701,15 +1205,19 @@ document.addEventListener("keydown", function (e) {
   else if (e.key === "ArrowLeft") step(-1);
 });
 
-var tv = { on: false, list: [], pos: -1, idx: -1, v: null, frame: null, playing: true, dur: 0, cur: 0, muted: true, direct: true, seeking: false, got: false, ht: 0, mt: 0, lt: 0, io: null, dirty: false };
+var tv = { on: false, list: [], pos: -1, idx: -1, v: null, frame: null, playing: true, dur: 0, cur: 0, muted: true, direct: true, pref: true, seeking: false, got: false, ht: 0, mt: 0, lt: 0, io: null, dirty: false, info: false, lastSeek: 0, bt: 0, lt0: 0 };
 function tvEl(id) { return document.getElementById(id); }
 function fmt(t) { t = Math.max(0, Math.floor(t || 0)); return Math.floor(t / 60) + ":" + (t % 60 < 10 ? "0" : "") + (t % 60); }
-function tvOpen(startIdx) {
-  tv.list = []; V.forEach(function (v, i) { if (v && (!filter || matches(v))) tv.list.push(i); });
+function tvOpen(startIdx, custom) {
+  tv.list = custom ? custom.slice() : []; if (!custom) V.forEach(function (v, i) { if (v && (!filter || matches(v))) tv.list.push(i); });
   if (!tv.list.length) return;
+  if (tv.io) tv.io.disconnect();
+  tvUnmount(); clearTimeout(tv.mt);
+  tvEl("tv-infop").classList.remove("open"); tv.info = false;
   var sc = tvEl("tv-scroll"); sc.innerHTML = "";
   tv.list.forEach(function (i, n) { var sl = el("div", "tv-slide"); sl.dataset.n = n; sl.appendChild(el("div", "tv-bg", V[i][2])); sc.appendChild(sl); });
   tv.on = true; tv.pos = -1; tv.dirty = false;
+  document.body.classList.add("tvon"); setNav();
   var t = tvEl("tv"); t.classList.add("on"); t.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
   var start = Math.max(0, tv.list.indexOf(startIdx));
@@ -720,9 +1228,11 @@ function tvOpen(startIdx) {
 }
 function tvClose() {
   if (!tv.on) return;
-  tv.on = false; tvUnmount(); clearTimeout(tv.mt); clearTimeout(tv.ht);
+  tv.on = false; tvUnmount(); clearTimeout(tv.mt); clearTimeout(tv.ht); clearTimeout(tv.bt); clearTimeout(tv.bf);
+  tvEl("tv-infop").classList.remove("open"); tv.info = false; tvEl("tv-big").classList.remove("on");
   if (tv.io) tv.io.disconnect();
-  var t = tvEl("tv"); t.classList.remove("on", "show"); t.setAttribute("aria-hidden", "true");
+  var t = tvEl("tv"); t.classList.remove("on", "show", "titling"); t.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("tvon", "tvshow"); setNav();
   tvEl("tv-scroll").innerHTML = "";
   document.body.style.overflow = "";
   if (document.fullscreenElement && document.exitFullscreen) document.exitFullscreen();
@@ -732,15 +1242,18 @@ function tvUnmount() {
   clearInterval(tv.lt);
   if (tv.frame) tv.frame.remove();
   var h = document.querySelector(".tv-hit"); if (h) h.remove();
+  var oo = document.querySelector(".tv-out"); if (oo) oo.remove();
   tv.frame = null;
 }
 function tvActivate(n) {
   if (n === tv.pos) return;
   clearTimeout(tv.mt); tvUnmount(); tv.pos = n;
-  tv.idx = tv.list[n]; tv.v = V[tv.idx]; tv.dur = 0; tv.cur = 0; tv.playing = true; tv.got = false;
+  tv.idx = tv.list[n]; tv.v = V[tv.idx]; tv.direct = tv.pref && !needProxy(tv.v); tv.dur = 0; tv.cur = 0; tv.playing = true; tv.got = false;
   tvEl("tv-count").textContent = (n + 1) + " / " + tv.list.length;
-  tvEl("tv-title").textContent = tv.v[2];
-  tvFavLabel(); tvDraw();
+  tvEl("tv-title").textContent = tv.v[2]; tvEl("tv-by").textContent = byline(tv.v);
+  tvEl("tv-plat").textContent = tv.v[0] === "y" ? "YouTube" : "Vimeo"; setAv(tvEl("tv-av"), tv.v);
+  tvFavLabel(); tvDraw(); tvBig(tv.v[2]);
+  if (tv.info) tvInfoRender();
   tv.mt = setTimeout(function () { tvMount(n); }, 160);
 }
 function tvSrc(v) {
@@ -750,30 +1263,35 @@ function tvSrc(v) {
 }
 function tvMount(n) {
   if (n !== tv.pos || !tv.on) return;
+  if (EMB.frames) {
+    var sl0 = tvEl("tv-scroll").children[n];
+    var h0 = el("div", "tv-hit"); h0.addEventListener("click", function () { tvInfo(); tvPing(); });
+    sl0.appendChild(h0); setTimeout(tvLoaded, 1000); return;
+  }
   var sl = tvEl("tv-scroll").children[n], f = el("iframe", "tv-frame");
-  f.src = tvSrc(tv.v); f.title = tv.v[2];
+  f.src = tvSrc(tv.v); f.title = tv.v[2]; f.referrerPolicy = "strict-origin-when-cross-origin";
   f.allow = "autoplay; fullscreen; picture-in-picture; encrypted-media"; f.allowFullscreen = true;
   tv.frame = f;
   f.addEventListener("load", function () {
-    if (!tv.direct) return;
+    if (!tv.direct) { setTimeout(tvLoaded, 1500); return; }
     tvListen();
     var tries = 0;
     clearInterval(tv.lt);
     tv.lt = setInterval(function () { if (tv.got || !tv.frame || ++tries > 12) clearInterval(tv.lt); else tvListen(); }, 500);
   });
   sl.appendChild(f);
-  if (tv.direct) { var h = el("div", "tv-hit"); h.addEventListener("click", function () { tvToggle(); tvPing(); }); sl.appendChild(h); }
+  if (tv.direct) { var h = el("div", "tv-hit"); h.addEventListener("click", function () { tvInfo(); tvPing(); }); sl.appendChild(h); }
   tvDraw();
 }
 function tvPost(m) { if (tv.frame && tv.frame.contentWindow) tv.frame.contentWindow.postMessage(JSON.stringify(m), "*"); }
 function tvListen() {
   if (!tv.v) return;
-  if (tv.v[0] === "y") tvPost({ event: "listening", id: 1, channel: "widget" });
-  else ["play", "pause", "ended", "timeupdate"].forEach(function (x) { tvPost({ method: "addEventListener", value: x }); });
+  if (tv.v[0] === "y") { tvPost({ event: "listening", id: 1, channel: "widget" }); tvPost({ event: "command", func: "addEventListener", args: ["onError"], id: 1, channel: "widget" }); }
+  else { ["play", "pause", "ended", "timeupdate"].forEach(function (x) { tvPost({ method: "addEventListener", value: x }); }); tvPost({ method: "getDuration" }); }
 }
 function tvCmd(a, val) {
   if (!tv.direct || !tv.v) return;
-  if (tv.v[0] === "y") tvPost({ event: "command", func: { play: "playVideo", pause: "pauseVideo", mute: "mute", unmute: "unMute", seek: "seekTo" }[a], args: a === "seek" ? [val, true] : [] });
+  if (tv.v[0] === "y") tvPost({ event: "command", func: { play: "playVideo", pause: "pauseVideo", mute: "mute", unmute: "unMute", seek: "seekTo" }[a], args: a === "seek" ? [val, true] : [], id: 1, channel: "widget" });
   else if (a === "seek") tvPost({ method: "setCurrentTime", value: val });
   else if (a === "mute" || a === "unmute") { tvPost({ method: "setMuted", value: a === "mute" }); tvPost({ method: "setVolume", value: a === "mute" ? 0 : 1 }); }
   else tvPost({ method: a });
@@ -786,28 +1304,101 @@ function tvGo(d) {
 }
 function tvFull() { var t = tvEl("tv"); if (document.fullscreenElement) document.exitFullscreen(); else if (t.requestFullscreen) t.requestFullscreen(); }
 function tvToast(m) { var t = tvEl("tv-toast"); t.textContent = m; t.classList.add("on"); setTimeout(function () { t.classList.remove("on"); }, 2200); }
-function tvFavLabel() { if (tv.v) tvEl("tv-fav").textContent = isFav(tv.v) ? "★ Favorito" : "☆ Favorito"; }
+function tvFavLabel() { if (tv.v) tvEl("tv-fav").classList.toggle("on", isFav(tv.v)); }
 function tvFav() {
   var k = vkey(tv.v);
   if (FAV[k]) { var n = FAV[k].frames.length; if (n) { tvToast("Tiene " + n + " capturas: quítalo desde la ficha"); return; } delete FAV[k]; }
   else FAV[k] = { ts: Date.now(), frames: [] };
   saveFav(); tv.dirty = true; tvFavLabel();
-  var bf = tvEl("favs"); if (bf) bf.textContent = "★ Favoritos (" + Object.keys(FAV).length + ")";
+  var bf = tvEl("favs"); if (bf) bf.textContent = "★ Favoritos (" + Object.keys(FAV).length + ")"; tvEl("pcount").textContent = Object.keys(FAV).length;
 }
 function tvDraw() {
   if (!tv.on) return;
-  tvEl("tv-play").textContent = !tv.direct ? "—" : (tv.playing ? "Pausa" : "Play");
-  tvEl("tv-mute").textContent = tv.muted ? "Sonido" : "Silenciar";
-  tvEl("tv-mode").textContent = tv.direct ? "Si no carga: reproductor Tumblr" : "Usar reproductor directo";
-  tvEl("tv-time").textContent = tv.dur ? fmt(tv.cur) + " / " + fmt(tv.dur) : (tv.direct ? "" : "Controles del reproductor Tumblr");
-  var sk = tvEl("tv-seek"); sk.disabled = !tv.direct || !tv.dur;
-  if (!tv.seeking) sk.value = tv.dur ? Math.round(tv.cur / tv.dur * 1000) : 0;
+  var pi = !tv.direct ? "" : IC[tv.playing ? "pause" : "play"];
+  tvEl("tv-play").innerHTML = pi; tvEl("tv-cplay").innerHTML = !tv.direct ? "" : IC[tv.playing ? "pause" : "play"];
+  tvEl("tv-mute").innerHTML = IC[tv.muted ? "mute" : "vol"];
+  tvEl("tv-mode").textContent = tv.direct ? "¿No carga? Probar reproductor Tumblr" : "Usar reproductor directo";
+  tvEl("tv-time").textContent = tv.dur ? fmt(tv.dur) : "";
+  tvEl("tv-now").textContent = tv.dur ? fmt(tv.cur) : "";
+  var pct = tv.dur ? Math.max(0, Math.min(100, tv.cur / tv.dur * 100)) : 0;
+  tvEl("tv-fill").style.width = pct + "%"; tvEl("tv-knob").style.left = pct + "%"; tvEl("tv-now").style.left = pct + "%";
+  tvEl("tv-line").classList.toggle("off", !tv.direct || !tv.dur);
 }
 function tvPing() {
-  var t = tvEl("tv"); t.classList.add("show"); clearTimeout(tv.ht);
+  var t = tvEl("tv"); t.classList.add("show"); document.body.classList.add("tvshow"); clearTimeout(tv.ht);
   if (!tv.direct) return;
-  tv.ht = setTimeout(function () { if (!tv.seeking) t.classList.remove("show"); }, 3200);
+  tv.ht = setTimeout(function () { if (!tv.seeking) { t.classList.remove("show"); document.body.classList.remove("tvshow"); } }, 3200);
 }
+function tvBig(t) {
+  var b = tvEl("tv-big"); clearTimeout(tv.bt); clearTimeout(tv.bf);
+  b.textContent = t; b.classList.remove("on", "loading"); void b.offsetWidth; b.classList.add("on", "loading");
+  tvEl("tv").classList.add("titling");
+  tv.bf = setTimeout(tvLoaded, 9000);
+}
+function tvLoaded() {
+  var b = tvEl("tv-big"); if (!b.classList.contains("loading")) return;
+  clearTimeout(tv.bf); clearTimeout(tv.bt); b.classList.remove("loading");
+  tv.bt = setTimeout(function () { b.classList.remove("on"); tvEl("tv").classList.remove("titling"); }, 1400);
+}
+function tvSeekBy(d) {
+  if (!tv.dur || !tv.direct) return;
+  tv.cur = Math.max(0, Math.min(tv.dur - 0.5, tv.cur + d)); tvCmd("seek", tv.cur); tv.lastSeek = Date.now(); tvDraw();
+}
+function tvInfo(open) {
+  var p = tvEl("tv-infop");
+  if (open === undefined) open = !p.classList.contains("open");
+  p.classList.toggle("open", open); p.setAttribute("aria-hidden", open ? "false" : "true"); tv.info = open;
+  if (open) tvInfoRender();
+}
+function tvRefilter(label, val) { filter = { label: label, val: val }; build(); tvOpen(tv.idx); }
+function tvJump(j) {
+  var pos = tv.list.indexOf(j);
+  if (pos < 0) { filter = null; build(); tvOpen(j); }
+  else tvEl("tv-scroll").children[pos].scrollIntoView({ behavior: "smooth" });
+}
+function tvRows(box, title, rs, fallback) {
+  if (!rs.length && !fallback) return;
+  box.appendChild(el("h3", "", title));
+  if (!rs.length) { box.appendChild(el("p", "", fallback)); return; }
+  var dl = el("dl");
+  rs.forEach(function (r) {
+    var row = el("div", "cr"), dd = el("dd");
+    row.appendChild(el("dt", "", r.k));
+    r.n.forEach(function (n) { var b = btn(n, function () { tvRefilter(r.k, n); }); b.className = "chip"; dd.appendChild(b); });
+    row.appendChild(dd); dl.appendChild(row);
+  });
+  box.appendChild(dl);
+}
+function tvInfoRender() {
+  var v = tv.v, box = tvEl("tv-ibody"); if (!v) return;
+  box.innerHTML = "";
+  box.appendChild(el("h2", "", v[2]));
+  box.appendChild(el("h3", "", "Artículo"));
+  articleParas(v).forEach(function (t) { box.appendChild(el("p", "", t)); });
+  srcBlock(box, v);
+  tvRows(box, "Ficha técnica", rows(v[5]), v[5] || "Créditos no indicados");
+  tvRows(box, "Categorías", rows(v[6]), "");
+  var rel = related(v);
+  if (rel.length) {
+    box.appendChild(el("h3", "", "Más en este archivo"));
+    var rw = el("div", "chips");
+    rel.slice(0, 8).forEach(function (x) { var b = btn(V[x.j][2], function () { tvJump(x.j); }); b.className = "chip"; rw.appendChild(b); });
+    box.appendChild(rw);
+  }
+  var full = btn("Abrir ficha completa (capturas y favoritos)", function () { var i = tv.idx; tvClose(); openPanel(i); });
+  full.className = "b tv-full-btn"; box.appendChild(full);
+
+  box.scrollTop = 0;
+}
+function tvTick() {
+  if (tv.on && tv.playing && tv.dur && !tv.seeking && tv.direct && tv.got) {
+    var now = performance.now();
+    if (tv.lt0) tv.cur = Math.min(tv.dur, tv.cur + (now - tv.lt0) / 1000);
+    tv.lt0 = now; tvDraw();
+  } else tv.lt0 = 0;
+  requestAnimationFrame(tvTick);
+}
+requestAnimationFrame(tvTick);
 window.addEventListener("message", function (e) {
   if (!tv.on || !tv.frame || e.source !== tv.frame.contentWindow) return;
   var d = e.data; if (typeof d === "string") { try { d = JSON.parse(d); } catch (x) { return; } }
@@ -815,16 +1406,18 @@ window.addEventListener("message", function (e) {
   tv.got = true;
   if (tv.v[0] === "y") {
     if (d.event === "onReady") tvListen();
-    if (d.event === "infoDelivery" && d.info) {
+    if (d.event === "onError" && tv.direct) { tv.direct = false; tvUnmount(); tv.got = false; tvMount(tv.pos); tvDraw(); tvToast("YouTube no permitió la incrustación directa: reproductor alternativo"); return; }
+    if ((d.event === "infoDelivery" || d.event === "initialDelivery") && d.info) {
       var i = d.info;
       if (i.duration) tv.dur = i.duration;
-      if (i.currentTime != null) tv.cur = i.currentTime;
-      if (i.playerState != null) { tv.playing = i.playerState === 1 || i.playerState === 3; if (i.playerState === 0) tvGo(1); }
+      if (i.currentTime != null && !tv.seeking && Date.now() - tv.lastSeek > 900) tv.cur = i.currentTime;
+      if (i.playerState != null) { tv.playing = i.playerState === 1 || i.playerState === 3; if (i.playerState === 1) tvLoaded(); if (i.playerState === 0) tvGo(1); }
       tvDraw();
     }
   } else {
-    if (d.event === "timeupdate" && d.data) { tv.cur = d.data.seconds; tv.dur = d.data.duration; }
-    else if (d.event === "play") tv.playing = true;
+    if (d.event === "timeupdate" && d.data) { if (!tv.seeking && Date.now() - tv.lastSeek > 900) tv.cur = d.data.seconds; tv.dur = d.data.duration; tvLoaded(); }
+    else if (d.method === "getDuration" && d.value) tv.dur = d.value;
+    else if (d.event === "play") { tv.playing = true; tvLoaded(); }
     else if (d.event === "pause") tv.playing = false;
     else if (d.event === "ended") tvGo(1);
     else if (d.event === "ready") tvListen();
@@ -832,12 +1425,14 @@ window.addEventListener("message", function (e) {
   }
 });
 document.addEventListener("keydown", function (e) {
-  if (!tv.on) return;
+  if (!tv.on || (SR && SR.on) || /^(INPUT|TEXTAREA)$/.test((e.target || {}).tagName || "")) return;
   var k = e.key;
-  if (k === "Escape") { tvClose(); return; }
+  if (k === "Escape") { if (tv.info) tvInfo(false); else tvClose(); return; }
   if (k === "ArrowDown" || k === "PageDown" || k === "j") { e.preventDefault(); tvGo(1); }
   else if (k === "ArrowUp" || k === "PageUp" || k === "k") { e.preventDefault(); tvGo(-1); }
   else if (k === " ") { e.preventDefault(); tvToggle(); }
+  else if (k === "ArrowRight") tvSeekBy(10);
+  else if (k === "ArrowLeft") tvSeekBy(-10);
   else if (k === "m") tvMute();
   else if (k === "f") tvFull();
   tvPing();
@@ -850,13 +1445,191 @@ tvEl("tv-next").addEventListener("click", function () { tvGo(1); tvPing(); });
 tvEl("tv-play").addEventListener("click", function () { tvToggle(); tvPing(); });
 tvEl("tv-mute").addEventListener("click", function () { tvMute(); tvPing(); });
 tvEl("tv-fav").addEventListener("click", function () { tvFav(); tvPing(); });
-tvEl("tv-info").addEventListener("click", function () { var i = tv.idx; tvClose(); openPanel(i); });
-tvEl("tv-mode").addEventListener("click", function () { tv.direct = !tv.direct; tvUnmount(); tv.got = false; tvMount(tv.pos); tvDraw(); tvPing(); });
-var sk = tvEl("tv-seek");
-sk.addEventListener("pointerdown", function () { tv.seeking = true; });
-sk.addEventListener("pointerup", function () { tv.seeking = false; tvPing(); });
-sk.addEventListener("input", function () { if (tv.dur) { tv.cur = sk.value / 1000 * tv.dur; tvCmd("seek", tv.cur); tvDraw(); } });
+tvEl("tv-info").addEventListener("click", function () { tvInfo(); tvPing(); });
+tvEl("tv-mode").addEventListener("click", function () { tv.pref = !tv.pref; tv.direct = tv.pref && !needProxy(tv.v); tvUnmount(); tv.got = false; tvMount(tv.pos); tvDraw(); tvPing(); });
+var ln = tvEl("tv-line");
+function tvSeekFrom(e) { var r = ln.getBoundingClientRect(); return Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)); }
+ln.addEventListener("pointerdown", function (e) {
+  if (!tv.dur || !tv.direct) return;
+  tv.seeking = true; ln.classList.add("drag"); try { ln.setPointerCapture(e.pointerId); } catch (x) {}
+  tv.cur = tvSeekFrom(e) * tv.dur; tvDraw(); tvPing(); e.stopPropagation();
+});
+ln.addEventListener("pointermove", function (e) { if (tv.seeking) { tv.cur = tvSeekFrom(e) * tv.dur; tvDraw(); tvPing(); } });
+ln.addEventListener("pointerup", function (e) {
+  if (!tv.seeking) return;
+  tv.seeking = false; ln.classList.remove("drag");
+  tv.cur = tvSeekFrom(e) * tv.dur; tvCmd("seek", tv.cur); tv.lastSeek = Date.now(); tvDraw(); tvPing();
+});
+ln.addEventListener("pointercancel", function () { tv.seeking = false; ln.classList.remove("drag"); });
+tvEl("tv-iclose").addEventListener("click", function () { tvInfo(false); });
+tvEl("emb-x").addEventListener("click", function () { var b = tvEl("emb"); b.hidden = true; b.dataset.closed = "1"; });
 tvEl("tvbtn").addEventListener("click", function () { tvOpen(tv.idx >= 0 && V[tv.idx] && (!filter || matches(V[tv.idx])) ? tv.idx : -1); });
+
+var IC = {
+  menu: '<svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>',
+  search: '<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>',
+  mic: '<svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></svg>',
+  send: '<svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg>',
+  close: '<svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>',
+  back: '<svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>',
+  next: '<svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>',
+  bm: '<svg viewBox="0 0 24 24"><path d="M7 4h10v16l-5-4-5 4z"/></svg>',
+  play: '<svg viewBox="0 0 24 24"><path class="f" d="M8 5v14l11-7z"/></svg>',
+  pause: '<svg viewBox="0 0 24 24"><path class="f" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>',
+  up: '<svg viewBox="0 0 24 24"><path d="M6 15l6-6 6 6"/></svg>',
+  down: '<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>',
+  vol: '<svg viewBox="0 0 24 24"><path d="M4 10v4h4l5 4V6L8 10z"/><path d="M16.5 9a4 4 0 010 6"/></svg>',
+  mute: '<svg viewBox="0 0 24 24"><path d="M4 10v4h4l5 4V6L8 10z"/><path d="M17 9.5l4 5M21 9.5l-4 5"/></svg>',
+  full: '<svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>',
+  b10: '<svg viewBox="0 0 24 24"><path d="M5 12a7 7 0 107-7H8M8 2L5 5l3 3"/><text x="12" y="15.5" text-anchor="middle" font-size="7" fill="currentColor" stroke="none">10</text></svg>',
+  f10: '<svg viewBox="0 0 24 24"><path d="M19 12a7 7 0 11-7-7h4M16 2l3 3-3 3"/><text x="12" y="15.5" text-anchor="middle" font-size="7" fill="currentColor" stroke="none">10</text></svg>'
+};
+Array.prototype.forEach.call(document.querySelectorAll("[data-ic]"), function (n) { n.innerHTML = IC[n.dataset.ic] || ""; });
+function nameRow(v, re) { var rs = rows(v[6] || "").concat(rows(v[5] || "")); for (var i = 0; i < rs.length; i++) if (re.test(rs[i].k)) return rs[i].n; return []; }
+function brandOf(v) { return nameRow(v, /^(Marca|Productora)/)[0] || ""; }
+function typeOf(v) { return nameRow(v, /^Tipo/)[0] || ""; }
+function tagOf(v) { return nameRow(v, /^Tem/)[0] || ""; }
+function byline(v) { var b = brandOf(v) || nameRow(v, /^(Dirección|Guion y dirección|Film)$/)[0] || "Visionnaire", t = typeOf(v); return "by " + b + (t ? " · " + t : ""); }
+function hueOf(v) { var h = 0, t = String(v[1]); for (var i = 0; i < t.length; i++) h = (h * 31 + t.charCodeAt(i)) % 360; return h; }
+function setAv(n, v) { var b = brandOf(v) || v[2]; n.textContent = (b.replace(/[^A-Za-zÀ-ÿ0-9]/g, "").charAt(0) || "V").toUpperCase(); n.style.background = "hsl(0,0%," + (22 + hueOf(v) % 5 * 6) + "%)"; }
+function capUse(n) { try { return window.claude && window.claude.use ? Promise.resolve(window.claude.use(n)).catch(function () { return null; }) : Promise.resolve(null); } catch (e) { return Promise.resolve(null); } }
+function setNav() { tvEl("nav-t").classList.toggle("on", tv.on); tvEl("nav-d").classList.toggle("on", !tv.on); }
+function closeMenus() { tvEl("menu-pop").classList.remove("open"); tvEl("profmenu").classList.remove("open"); }
+tvEl("menu").addEventListener("click", function () { var o = !tvEl("menu-pop").classList.contains("open"); closeMenus(); tvEl("menu-pop").classList.toggle("open", o); });
+tvEl("prof").addEventListener("click", function () { var o = !tvEl("profmenu").classList.contains("open"); closeMenus(); tvEl("profmenu").classList.toggle("open", o); });
+document.addEventListener("click", function (e) { if (!e.target.closest(".bar.menu, #menu, .pmenu, #prof")) closeMenus(); });
+tvEl("nav-d").addEventListener("click", function () { if (tv.on) tvClose(); window.scrollTo({ top: 0, behavior: "smooth" }); closeMenus(); });
+tvEl("nav-t").addEventListener("click", function () { if (!tv.on) tvOpen(-1); closeMenus(); });
+tvEl("pm-fav").addEventListener("click", function () { closeMenus(); tvEl("favs").click(); });
+tvEl("pm-ged").addEventListener("click", function () { closeMenus(); tvEl("gest").click(); });
+tvEl("pm-bak").addEventListener("click", function () { closeMenus(); openBackup(); });
+tvEl("tv-b10").addEventListener("click", function () { tvSeekBy(-10); tvPing(); });
+tvEl("tv-f10").addEventListener("click", function () { tvSeekBy(10); tvPing(); });
+tvEl("tv-cplay").addEventListener("click", function () { tvToggle(); tvPing(); });
+tvEl("tv-info").addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); tvInfo(); } });
+capUse("user").then(function (u) {
+  if (!u || !u.me) return;
+  u.me().then(function (m) {
+    if (!m) return;
+    var nm = m.name || "Invitado";
+    tvEl("pname").textContent = nm;
+    [tvEl("av"), tvEl("av2")].forEach(function (n) {
+      n.textContent = nm.charAt(0).toUpperCase(); n.style.background = "#333";
+      if (m.avatarUrl) { var im = el("img"); im.alt = ""; im.src = m.avatarUrl; im.addEventListener("error", function () { im.remove(); }); n.appendChild(im); }
+    });
+  }).catch(function () {});
+});
+
+var SR = { on: false, busy: false, sample: null, dict: null, rec: null, acc: "", fin: "", hist: [] };
+var STOP = { los: 1, las: 1, del: 1, con: 1, una: 1, que: 1, por: 1, para: 1, video: 1, videos: 1, quiero: 1, ver: 1, busca: 1, muestrame: 1, dame: 1 };
+function norm(t) { return String(t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase(); }
+function srAdd(role, text) { var m = el("div", "msg " + role); m.textContent = text; var c = tvEl("sr-chat"); c.appendChild(m); c.scrollTop = c.scrollHeight; return m; }
+function srOpen() {
+  SR.on = true; tvEl("sr").classList.add("on"); tvEl("sr").setAttribute("aria-hidden", "false"); closeMenus();
+  if (!tvEl("sr-chat").children.length) {
+    var g = srAdd("a", "¿Qué quieres ver? Describe una marca, un director, un lugar o un tema, o pulsa el micrófono.");
+    var sg = el("div", "sr-sug");
+    ["Campañas de Loewe", "Desfiles de primavera-verano 2027", "Rodados en Tokio", "Documentales sobre artesanía"].forEach(function (t) { sg.appendChild(btn(t, function () { srAsk(t); })); });
+    g.appendChild(sg);
+  }
+  setTimeout(function () { tvEl("sr-q").focus(); }, 60);
+}
+function srClose() {
+  SR.on = false; tvEl("sr").classList.remove("on"); tvEl("sr").setAttribute("aria-hidden", "true");
+  try { if (SR.dict && SR.dict.active()) SR.dict.stop().catch(function () {}); if (SR.rec) SR.rec.stop(); } catch (e) {}
+}
+function srLocal(q) {
+  var toks = norm(q).split(/[^a-z0-9]+/).filter(function (t) { return t.length > 2 && !STOP[t]; }), sc = [];
+  V.forEach(function (v, i) {
+    if (!v) return;
+    var hay = norm([v[2], v[4], v[5], v[6]].join(" ")), ti = norm(v[2]), s = 0;
+    toks.forEach(function (t) { if (hay.indexOf(t) > -1) s += ti.indexOf(t) > -1 ? 3 : 1; });
+    if (s) sc.push([s, i]);
+  });
+  sc.sort(function (a, b) { return b[0] - a[0]; });
+  var ids = sc.slice(0, 12).map(function (x) { return x[1]; });
+  return { ids: ids, reply: ids.length ? "He encontrado " + ids.length + " vídeo(s) para «" + q + "». Búsqueda local, sin IA." : "No encuentro nada para «" + q + "». Prueba con una marca, un director o un tema." };
+}
+function srShow(out, node) {
+  node.textContent = out.reply || (out.ids.length ? "Esto es lo que he encontrado." : "No he encontrado resultados.");
+  if (!out.ids.length) return;
+  node.classList.add("has-res");
+  var g = el("div", "res");
+  out.ids.forEach(function (i) {
+    var v = V[i], c = el("button", "rc"); c.type = "button";
+    c.appendChild(el("b", "", v[2])); c.appendChild(el("i", "", byline(v)));
+    c.addEventListener("click", function () { srClose(); tvOpen(i, out.ids); });
+    g.appendChild(c);
+  });
+  node.appendChild(g);
+  var act = el("div", "ctl");
+  act.appendChild(btn("Ver en modo TV", function () { srClose(); tvOpen(out.ids[0], out.ids); }));
+  act.appendChild(btn("Mostrar en la parrilla", function () {
+    var keys = {}; out.ids.forEach(function (i) { keys[vkey(V[i])] = 1; });
+    filter = { label: "Búsqueda", val: "", keys: keys }; srClose(); if (tv.on) tvClose(); build();
+    tvEl("fbar").scrollIntoView({ behavior: "smooth" });
+  }));
+  node.appendChild(act);
+  tvEl("sr-chat").scrollTop = tvEl("sr-chat").scrollHeight;
+}
+async function srAsk(q) {
+  q = (q || tvEl("sr-q").value || "").trim();
+  if (!q || SR.busy) return;
+  tvEl("sr-q").value = ""; srAdd("u", q); SR.busy = true;
+  var node = srAdd("a", "Buscando…"), out = null;
+  if (SR.sample) {
+    try {
+      var cat = [];
+      V.forEach(function (v, i) { if (v) cat.push(i + "|" + v[2] + "|" + brandOf(v) + "|" + typeOf(v) + "|" + nameRow(v, /^Tem/).join(",") + "|" + nameRow(v, /^(Dirección|Guion y dirección|Film)$/).join(",")); });
+      var prompt = "Eres el buscador de un archivo de vídeos de moda y cultura visual. Catálogo (índice|título|marca|tipo|temática|dirección):\n" + cat.join("\n") + "\n\n" + (SR.hist.length ? "Búsquedas anteriores: " + SR.hist.slice(-3).join(" / ") + "\n" : "") + "Petición del usuario: " + q + "\n\nResponde SOLO con JSON: {\"reply\":\"frase breve en español\",\"ids\":[hasta 12 índices del catálogo, del más al menos relevante]}. Si nada encaja, ids vacío y explícalo en reply.";
+      var r = await SR.sample.json(prompt, { modelTier: "quick" });
+      var ids = (r && r.ids ? r.ids : []).map(Number).filter(function (i, k, a) { return V[i] && a.indexOf(i) === k; }).slice(0, 12);
+      out = { ids: ids, reply: String((r && r.reply) || "") };
+    } catch (e) { out = null; }
+  }
+  if (!out) out = srLocal(q);
+  SR.hist.push(q); SR.busy = false;
+  srShow(out, node);
+}
+tvEl("search").addEventListener("click", srOpen);
+tvEl("sr-x").addEventListener("click", srClose);
+tvEl("sr-go").addEventListener("click", function () { srAsk(); });
+tvEl("sr-q").addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); srAsk(); } });
+document.addEventListener("keydown", function (e) { if (SR.on && e.key === "Escape") { e.stopImmediatePropagation(); srClose(); } }, true);
+capUse("sample").then(function (x) { SR.sample = x; });
+window.addEventListener("scroll", function () { tvEl("hd").classList.toggle("solid", window.scrollY > window.innerHeight * 0.55); }, { passive: true });
+function srCols(n) {
+  SR.cols = n; var sr = tvEl("sr"); sr.dataset.rc = n; sr.style.setProperty("--rc", n);
+  Array.prototype.forEach.call(document.querySelectorAll("#sr-cols button"), function (b) { b.classList.toggle("on", +b.dataset.n === n); });
+  try { localStorage.setItem("visionnaire.rcols", n); } catch (e) {}
+}
+Array.prototype.forEach.call(document.querySelectorAll("#sr-cols button"), function (b) { b.addEventListener("click", function () { srCols(+b.dataset.n); }); });
+var rc0 = 2; try { var rcs = +localStorage.getItem("visionnaire.rcols"); if (rcs === 2 || rcs === 4) rc0 = rcs; } catch (e) {}
+srCols(rc0);
+capUse("dictation").then(function (d) {
+  SR.dict = d; if (!d) return;
+  d.onPartial(function (e) { tvEl("sr-q").value = (SR.acc + (e.text ? " " + e.text : "")).trim(); });
+  d.onFinal(function (e) { SR.acc = (SR.acc + e.text).trim(); tvEl("sr-q").value = SR.acc; });
+  d.onState(function (e) {
+    tvEl("sr-mic").classList.toggle("rec", e.state === "listening" || e.state === "starting");
+    if (e.state === "idle" && SR.acc) { var q = SR.acc; SR.acc = ""; tvEl("sr-q").value = ""; srAsk(q); }
+  });
+});
+tvEl("sr-mic").addEventListener("click", function () {
+  if (SR.dict) {
+    if (SR.dict.active()) SR.dict.stop().catch(function () {});
+    else { SR.acc = ""; tvEl("sr-q").value = ""; SR.dict.start().catch(function (e) { srAdd("a", "No pude usar el micrófono (" + ((e && e.code) || "error") + "). Escribe tu búsqueda."); }); }
+    return;
+  }
+  var RC = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!RC) { srAdd("a", "Tu navegador no permite dictado por voz aquí. Escribe tu búsqueda."); return; }
+  if (SR.rec) { SR.rec.stop(); return; }
+  var r = new RC(); r.lang = navigator.language || "es-ES"; r.interimResults = true; r.continuous = false;
+  r.onresult = function (ev) { var t = ""; for (var i = 0; i < ev.results.length; i++) t += ev.results[i][0].transcript; tvEl("sr-q").value = t; if (ev.results[ev.results.length - 1].isFinal) SR.fin = t; };
+  r.onend = function () { tvEl("sr-mic").classList.remove("rec"); SR.rec = null; if (SR.fin) { var q = SR.fin; SR.fin = ""; tvEl("sr-q").value = ""; srAsk(q); } };
+  r.onerror = function (ev) { srAdd("a", "No pude usar el micrófono (" + ev.error + "). Escribe tu búsqueda."); };
+  SR.rec = r; tvEl("sr-mic").classList.add("rec"); try { r.start(); } catch (x) {}
+});
 document.getElementById("favs").addEventListener("click", function () {
   if (filter && filter.val === "★fav") filter = null; else filter = { label: "Favoritos", val: "★fav" };
   build(); if (filter) document.getElementById("fbar").scrollIntoView({ behavior: "smooth" });
